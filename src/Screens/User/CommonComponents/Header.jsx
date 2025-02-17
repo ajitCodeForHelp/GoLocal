@@ -9,8 +9,7 @@ import TableBook from "../UserScreens/Home/TableBooking/TableBooking";
 
 function Header() {
     const [show, setShow] = useState(false);
-    const [showModal, setShowModal] = useState(false); // State for TableBook modal
-
+    const [showModal, setShowModal] = useState(false);
     const locations = [
         "Pyramid Amayra",
         "Pyramid Chandigarh",
@@ -45,28 +44,30 @@ function Header() {
     return (
         <>
             {/* Navbar */}
-            <Navbar expand="lg" className="bg-dark py-3 d-flex justify-content-center" style={{
-                position: "sticky",
+            <Navbar expand="lg" className=" navbar bg-dark py-3 d-flex justify-content-center" style={{
+                position: "sticky ",
                 top: 0,
-                backgroundColor: "white",
                 zIndex: 20,
             }}>
                 <div className="roww d-flex justify-content-between ">
                     {/* Menu Button for Mobile */}
-                    <Button
-                        variant="outline-light"
-                        className="d-lg-none"
-                        onClick={() => setShow(true)}
-                    >
-                        ☰
-                    </Button>
+                    <div className="nav-res">
 
-                    {/* Logo */}
-                    <Navbar.Brand href="#" className="text-warning ms-3">
+
+                        <Button
+                            variant="outline-light"
+                            className="d-lg-none"
+                            onClick={() => setShow(true)}
+                        >
+                            ☰
+                        </Button>
+
+                        {/* Logo */}
+                        {/* <Navbar.Brand href="#" className="text-warning ms-3"> */}
                         <Link to="/" className="text-warning"><h2>Better Think</h2></Link>
-                    </Navbar.Brand>
-
-                    <div className="position-relative" style={{ width: "40%" }} ref={dropdownRef}>
+                        {/* </Navbar.Brand> */}
+                    </div>
+                    <div className="search-bar position-relative" style={{ width: "40%" }} ref={dropdownRef}>
                         <div
                             className="bg-white px-3 py-1 rounded d-flex justify-content-between align-items-center"
                             style={{ cursor: "pointer", border: "1px solid #ccc" }}
@@ -112,7 +113,7 @@ function Header() {
                             <span className="text-warning fs-5"><FaMapMarkerAlt /> Location</span>
                         </Link>
                         <Link to="/myorder">
-                        <FaUser className="text-warning fs-5" />
+                            <FaUser className="text-warning fs-5" />
                         </Link>
                     </div>
                 </div>

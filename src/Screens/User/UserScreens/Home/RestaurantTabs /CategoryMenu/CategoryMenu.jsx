@@ -1,5 +1,5 @@
 import React from "react";
-import { MdOutlineDeliveryDining } from "react-icons/md";
+import { TbCategory } from "react-icons/tb";
 
 function CategoryMenu() {
     const category = [
@@ -40,8 +40,8 @@ function CategoryMenu() {
                             zIndex: 10,
                             borderBottom: "1px solid #ddd"
                         }}>
-                        <MdOutlineDeliveryDining />
-                        <h4 className="p-0 m-0 fs-3 ml-2">Category</h4>
+                        <TbCategory style={{fontSize:"2.2rem"}} />
+                        <h5 className="p-0 m-0 fs-3 ml-2">Category</h5>
                     </li>
                     {
                         category.map((itm) => {
