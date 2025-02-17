@@ -1,0 +1,111 @@
+*{
+    font-family: Arial, Helvetica, sans-serif;
+}
+.roww {
+    width: 95% !important;
+}
+
+a {
+    outline: none;
+    text-decoration: none !important;
+}
+
+input:focus {
+    outline: none !important;
+    box-shadow: none !important;
+    background-color: white !important;
+}
+
+select:focus {
+    outline: none !important;
+    box-shadow: none !important;
+    background-color: white !important;
+}
+
+
+/* ------Restaurant-Tabs------ */
+.res-tab ul li h4 {
+    padding-top: 7px;
+    font-size: 20px;
+    font-weight: 300;
+}
+
+.res-tab ul li {
+    border-radius: 10px;
+}
+
+/* ----Category-tab---- */
+.cat-tab {
+    border-radius: 10px 10px 5px 5px;
+    border: 1px solid #eee;
+    max-height: 550px;
+    overflow-y: scroll !important;
+}
+
+.cat-tab::-webkit-scrollbar {
+    display: none;
+}
+
+.cat-tab .li {
+    font-size: 25px;
+    background-color: black;
+    color: orange;
+    border-radius: 10px 10px 0px 0px;
+}
+
+.cat-tab .li-a {
+    font-weight: bold;
+    border-bottom: 1px solid #eee;
+}
+
+.cat-tab ul {
+    text-decoration: none;
+    list-style-type: none;
+
+}
+
+.cat-tab ul li {
+    list-style-type: none;
+}
+
+/* ---Menu-tab---- */
+.menu-tab {
+    max-height: 550px;
+    overflow-y: scroll !important;
+    border-radius: 6px 6px 5px 5px;
+}
+
+.menu-tab::-webkit-scrollbar {
+    display: none;
+}
+
+/* -----Merge----- */
+.main {
+    background-color: #efecec;
+}
+.main .btn button{
+    background-color: #efecec;
+}
+.main .btn button:hover{
+    color: orange;
+}
+.modal-header button .btn-close {
+    color: white;
+}
+
+.modal-open .fade {
+    overflow: hidden;
+}
+
+.modal-open .modal-body::-webkit-scrollbar {
+    display: none;
+}
+.profile .btn{
+    box-shadow: 0 4px 14px #0000000f;
+    border: none;
+}
+.profile button:hover{
+    color: orange;
+}
+
+/* -----RESPONSIVE------ */
