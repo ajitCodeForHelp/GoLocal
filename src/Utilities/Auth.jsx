@@ -1,12 +1,14 @@
 import React from 'react';
-import { Outlet } from 'react-router-dom';
+import { Outlet, useNavigate } from 'react-router-dom';
+import LoginPage from '../Screens/Admin/CommonComponents/LoginPage';
 
 function Auth() {
-    const token = true
+    const token = true;
+    const navigation = useNavigate();
     return (
         <>
             {
-                token ? <Outlet /> : ""
+                token ? <Outlet /> : navigation("/login")
             }
         </>
     )

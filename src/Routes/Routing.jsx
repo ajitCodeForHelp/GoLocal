@@ -15,6 +15,7 @@ import RestaurantLocation from "../Screens/User/UserScreens/Home/RestaurantLocat
 import TableBook from "../Screens/User/UserScreens/Home/TableBooking/TableBooking";
 import MyOrderParent from "../Screens/User/UserScreens/AccountSection/MyOrder/MyOrderParent";
 import AddressParent from "../Screens/User/UserScreens/AccountSection/MyAddress/AddressParent";
+import LoginPage from "../Screens/Admin/CommonComponents/LoginPage";
 
 
 
@@ -24,6 +25,7 @@ function Routing() {
     return (
         <>
             <Routes>
+                <Route path="/login" element={<LoginPage />} />
                 <Route path="/admin" element={<Auth />}>
                     <Route path="dashboard" element={
                         <TenantProvider><MergeComponents getComponent={<Dashboard />} /></TenantProvider>} />
