@@ -17,6 +17,7 @@ function NavButtons() {
             backgroundColor: "white",
             borderRadius: "5px",
             position: "sticky",
+            marginBottom:"10px",
             top: 86,
             zIndex: 15,
         }}>

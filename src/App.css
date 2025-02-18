@@ -20,6 +20,11 @@ li {
 .roww {
     width: 95% !important;
 }
+/* White Close Button for Modal */
+.modal-header .btn-close {
+    filter: invert(1); /* Inverts color to white */
+}
+
 
 input:focus {
     outline: none !important;
@@ -134,15 +139,90 @@ select:focus {
     justify-content: center;
     align-items: center;
 }
+.res-cart{
+    display: none;
+}
+.nav-res .tablebook-img{
+    display: none; /* Show only on small screens */
+}
+
+.nav-res h2{
+    margin: 0px !important;
+}
+
+/* -----Res-category--- */
+.category-scroll-container {
+    overflow-x: auto;
+    white-space: nowrap;
+    scrollbar-width: none; /* Hide scrollbar for Firefox */
+    -ms-overflow-style: none; /* Hide scrollbar for IE */
+}
+
+.category-scroll-container::-webkit-scrollbar {
+    display: none !important; /* Hide scrollbar for Chrome, Safari */
+}
+  
+  .category-list {
+    display: flex;
+    gap: 15px;
+    padding: 10px 0;
+  }
+  
+  .category-item {
+    padding: 8px 15px;
+    cursor: pointer;
+    font-weight: 500;
+    color: #7a7a7a;
+    transition: color 0.3s ease;
+  }
+  
+  .category-item.active {
+    font-weight: bold;
+    color: black;
+    border-bottom: 2px solid #ffcc00;
+  }
+  
+  .sub-category-container {
+    display: flex;
+    gap: 10px;
+  }
+  
+  .res-category{
+    display: none;
+  }
+  /* .animation-h button{
+    background-color: orange;
+    
+  } */
+
+  .animation-h {
+    text-transform: uppercase;
+    background: linear-gradient(to right, #5c5c5c, #c2c2c2, #c9c8c8, rgb(160, 160, 160), #5c5c5c);
+    background-size: 200%;
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: animate-gradient 2.5s linear infinite;
+  }
+ 
+  @keyframes animate-gradient {
+    to {
+      background-position: 200%;
+    }
+  }
 /* -----RESPONSIVE------ */
 
-@media screen and (max-width:1000px) {
-
+@media (max-width:1000px) {
+    .sub-category-btn {
+        border-radius: 20px !important;
+        padding:5px 20px !important ;
+      }
     /* ---Navbar----- */
     .navbar .nav-res {
         display: flex;
         justify-content: space-between;
-        margin-bottom: 15px;
+        align-items: center;
+        margin-bottom: 5px;
     }
 
     .navbar .nav-res a {
@@ -189,7 +269,46 @@ select:focus {
         width: 90px !important;
         height: 27px !important;
     }
-
+    .footer{
+        display: none !important;
+    }
+    .res-cart{
+        display: block;
+        background-color: black;
+        color: orange;
+            position: fixed;
+            bottom: 0;
+            z-index: 100;
+            width: 100%;
+    }
+    .menu-tab .item{
+        margin-bottom: 4rem;
+    }
+    .res-header .offcanvas-body{
+        padding: 0 !important;
+    }
+    .res-header .offcanvas-body a{
+        color: black;
+    }
+   
+    .nav-res .tablebook-img{
+        display: block; /* Show only on small screens */
+        margin-left: 10px;
+    }
+    .nav-res .tablebook-img{
+        width: 50px; /* Adjust size */
+        height: 50px;
+    }
+    .nav-res .tablebook-img img{
+        width: 100%; /* Adjust size */
+        height: 100%;
+    }
+    .nav-res .slide {
+        height: 40px !important;
+    }
+    .res-category{
+        display: block;
+      }
 }
 
 @media (max-width: 830px) {
@@ -205,7 +324,7 @@ select:focus {
 
 @media (max-width: 600px) {
     .slide-image {
-        height: 200px !important;
+        height: 210px !important;
     }
 
     .res-tab h4 {
@@ -226,6 +345,10 @@ select:focus {
         width: 90px !important;
         height: 90px !important;
     }
+    .menu-tab .filter-btn button{
+        padding: 0px 5px !important;
+    }
+  
 }
 
 @media (min-width: 576px) {
@@ -253,6 +376,7 @@ select:focus {
 
     .res-tab h4 {
         font-size: 15px !important;
+        font-weight: 600 !important;
     }
 
     .roww {
@@ -273,10 +397,7 @@ select:focus {
         width: 70px !important;
         height: 70px !important;
     }
-
+    .sub-category-btn {
+        font-size: 15px !important;
+      }
 }
-
-@media (max-width: 400px) {
-}
-
-@media (min-width: 1200px) {}
