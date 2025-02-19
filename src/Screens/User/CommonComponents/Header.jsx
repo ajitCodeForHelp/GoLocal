@@ -6,14 +6,23 @@ import { SlArrowDown } from "react-icons/sl";
 import { Link } from "react-router-dom";
 import TableBook from "../UserScreens/Home/TableBooking/TableBooking";
 import tablebook from "../../../Assets/Images/book_a_table.gif"
+import Login from "../UserScreens/LoginPage/Login";
 
 function Header() {
     const [show, setShow] = useState(false);
     const [showModal, setShowModal] = useState(false);
+    const [showLoginModal, setShowLoginModal] = useState(false);
     const [selected, setSelected] = useState("Pyramid Amayra");
     const [showDropdown, setShowDropdown] = useState(false);
     const [search, setSearch] = useState("");
     const dropdownRef = useRef(null);
+
+
+    const handleLoginClick = () => {
+        setShowLoginModal(!showLoginModal);
+        console.log("hey click");
+        
+    };
 
     const locations = [
         "Pyramid Amayra",
@@ -57,7 +66,7 @@ function Header() {
     return (
         <>
             {/* Navbar */}
-            <Navbar expand="lg" className="navbar bg-dark py-3 d-flex justify-content-center" style={{ position: "sticky", top: 0, zIndex: 1050, width: "100%" }}>
+            <Navbar expand="lg" className="navbar bg-dark py-4 d-flex justify-content-center" style={{ position: "sticky", top: 0, zIndex: 100, width: "100%" }}>
 
                 <div className="roww d-flex justify-content-between align-items-center">
                     {/* Menu Button for Mobile */}
@@ -72,7 +81,7 @@ function Header() {
 
                         {/* Logo */}
                         <Link to="/" className="text-warning">
-                            <h2 >Better Think</h2>
+                            <h2 >GoLocal</h2>
                         </Link>
                         <div className="tablebook-img" onClick={() => setShowModal(true)}>
 
@@ -129,6 +138,7 @@ function Header() {
                         <Link to="/myorder">
                             <FaUser className="text-warning fs-5" />
                         </Link>
+                        <Button variant="warning" onClick={handleLoginClick}>Login</Button>
                     </div>
                 </div>
             </Navbar>
@@ -163,6 +173,8 @@ function Header() {
 
             {/* Table Booking Modal */}
             <TableBook show={showModal} handleClose={() => setShowModal(false)} />
+
+            <Login show={showLoginModal} handleClose={() => setShowLoginModal(false)} />
         </>
     );
 }
