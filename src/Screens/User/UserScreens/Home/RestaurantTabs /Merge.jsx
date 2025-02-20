@@ -1,55 +1,72 @@
-import React, { useState } from "react";
-import NavButtons from "./NavButtons";
-import CategoryMenu from "./TakeAway/CategoryMenu/CategoryMenu";
-import MenuItems from "./TakeAway/MenuItems/MenuItems";
-import Cart from "./TakeAway/Cart/Cart";
-import { Container, Row, Col, Button } from "react-bootstrap";
-import { FaShoppingBasket } from "react-icons/fa";
+import React from "react";
+import { MdDeliveryDining } from "react-icons/md";
+import { FaBasketShopping } from "react-icons/fa6";
+import { ImSpoonKnife } from "react-icons/im";
+import { FaBottleWater } from "react-icons/fa6";
+import { Link, useLocation } from "react-router-dom";
+import Header from "../../../CommonComponents/Header";
+import Banner from "../../../CommonComponents/Banner";
+import Footer from "../../../CommonComponents/Footer";
 
-function Merge() {
-    const [showModal, setShowModal] = useState(false); // ✅ Modal state
+function Merge({ getComponent }) {
+    const location = useLocation(); // Get current path
+
+    const res = [
+        { btn: "Delivery", icon: <MdDeliveryDining />, link: "/delivery" },
+        { btn: "Take Away", icon: <FaBasketShopping />, link: "/takeaway" },
+        { btn: "Dine In", icon: <ImSpoonKnife />, link: "/dinein" },
+        { btn: "Steal Deals", icon: <FaBottleWater />, link: "/stealdeals" },
+    ];
 
     return (
         <>
+            <Header />
+            <Banner />
             <div className="">
-
-
                 <div className="main d-flex justify-content-center">
                     <div className="roww" style={{ paddingTop: "10px", paddingBottom: "15px" }}>
-                        <NavButtons />
+                        <div className="res-tab" style={{
+                            backgroundColor: "white",
+                            borderRadius: "5px",
+                            position: "sticky",
+                            marginBottom: "10px",
+                            top: 86,
+                            zIndex: 15,
+                        }}>
+                            <ul className="res-buttons p-0 d-flex justify-content-around align-items-center">
+                                {res.map((itm, index) => (
+                                    <li 
+                                        key={index} 
+                                        className="d-flex justify-content-center align-items-center m-2"
+                                        style={{ 
+                                            minWidth: "120px", 
+                                            padding: "5px 30px", 
+                                            backgroundColor: location.pathname === itm.link ? "orange" : "black", 
+                                            borderRadius: "5px" 
+                                        }}
+                                    >
+                                        <Link to={itm.link} className="option-button" style={{ textDecoration: "none" }}>
+                                            <h4 className="d-flex align-items-center" style={{ gap: "10px", color: location.pathname === itm.link ? "white" : "yellow" }}>
+                                                {itm.icon}
+                                                {itm.btn}
+                                            </h4>
+                                        </Link>
+                                    </li>
+                                ))}
+                            </ul>
+                        </div>
+
                         <div className="merge-flex d-flex justify-content-between">
-                            <CategoryMenu />
-                            <MenuItems />
-                            <Cart show={showModal} handleClose={() => setShowModal(false)} /> {/* ✅ Passing state */}
+                            {getComponent}
                         </div>
                     </div>
                 </div>
-
-                {/* ✅ Floating Cart Button */}
-                <div className="res-cart">
-                    <Container fluid className="cart-container p-3">
-                        <Row className="align-items-center justify-content-between">
-                            {/* Left Side: Total Items & Price */}
-                            <Col xs={6} md={6} className="cart-text">
-                                <span className="cart-items">2 Total</span> | <span className="cart-price">₹ 438</span>
-                            </Col>
-
-                            {/* Right Side: View Cart Button */}
-                            <Col xs={6} md={6} className="text-end">
-                                <Button
-                                    variant="outline-warning"
-                                    className="cart-btn"
-                                    onClick={() => setShowModal(true)} // ✅ Open modal on click
-                                >
-                                    View Cart <FaShoppingBasket className="ms-1" />
-                                </Button>
-                            </Col>
-                        </Row>
-                    </Container>
-                </div>
             </div>
+
+            <Footer />
         </>
     );
 }
 
 export default Merge;
+ 

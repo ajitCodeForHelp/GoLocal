@@ -7,10 +7,10 @@ import Merge from "./RestaurantTabs /Merge";
 function Home (){
     return(
         <>
-        <Header/>
-        <Banner/>
+        {/* <Header/>
+        <Banner/> */}
         <Merge/>
-        <Footer/>
+        {/* <Footer/> */}
         </>
     )
 }
