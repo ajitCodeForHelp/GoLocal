@@ -21,12 +21,10 @@ function TableBook({ show, handleClose }) {
         <Modal show={show} onHide={handleClose} centered>
             <div className="table-book" style={{ maxHeight: "600px", overflow: "hidden", display: "flex", flexDirection: "column" }}>
                 {/* Sticky Header */}
-                <Modal.Header className="d-flex justify-content-between align-items-center" 
+                <Modal.Header className="modal-head d-flex justify-content-between align-items-center" 
                     style={{
                         position: "sticky",
                         top: 0,
-                        backgroundColor: "black",
-                        color: "white",
                         zIndex: 10,
                         borderBottom: "1px solid #eee"
                     }}>

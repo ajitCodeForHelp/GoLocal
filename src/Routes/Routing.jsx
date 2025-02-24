@@ -43,13 +43,13 @@ function Routing() {
                 </Route>
                 
 
-                <Route path="/" element={<Home />} />
+                <Route path="/home" element={<Home />} />
                 {/* <Route path="/restaurantlocation" element={<RestaurantLocation />} /> */}
                 <Route path="/tablebook" element={<TableBook />} />
                 <Route path="/myorder" element={<MyOrderParent />} />
                 <Route path="/myaddress" element={<AddressParent />} />
                 {/* <Route path="/login" element={<Login />} /> */}
-                <Route path="/takeaway" element={<TakeAwayParent />} />
+                <Route path="/" element={<TakeAwayParent />} />
             </Routes>
 
         </>

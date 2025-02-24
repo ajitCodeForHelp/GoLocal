@@ -13,7 +13,7 @@ function Merge({ getComponent }) {
 
     const res = [
         { btn: "Delivery", icon: <MdDeliveryDining />, link: "/delivery" },
-        { btn: "Take Away", icon: <FaBasketShopping />, link: "/takeaway" },
+        { btn: "Take Away", icon: <FaBasketShopping />, link: "/" },
         { btn: "Dine In", icon: <ImSpoonKnife />, link: "/dinein" },
         { btn: "Steal Deals", icon: <FaBottleWater />, link: "/stealdeals" },
     ];
@@ -26,7 +26,6 @@ function Merge({ getComponent }) {
                 <div className="main d-flex justify-content-center">
                     <div className="roww" style={{ paddingTop: "10px", paddingBottom: "15px" }}>
                         <div className="res-tab" style={{
-                            backgroundColor: "white",
                             borderRadius: "5px",
                             position: "sticky",
                             marginBottom: "10px",
@@ -46,7 +45,7 @@ function Merge({ getComponent }) {
                                         }}
                                     >
                                         <Link to={itm.link} className="option-button" style={{ textDecoration: "none" }}>
-                                            <h4 className="d-flex align-items-center" style={{ gap: "10px", color: location.pathname === itm.link ? "white" : "yellow" }}>
+                                            <h4 className="d-flex align-items-center" style={{ gap: "10px", color: location.pathname === itm.link ? "white" : "orange" }}>
                                                 {itm.icon}
                                                 {itm.btn}
                                             </h4>

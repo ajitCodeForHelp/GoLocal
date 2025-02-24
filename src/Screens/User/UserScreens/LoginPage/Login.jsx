@@ -69,7 +69,7 @@ function Login({ show, handleClose }) {
                   {phoneError && <p className="text-danger mt-2">{phoneError}</p>}
                 </Form.Group>
                 <Button
-                  variant="warning"
+                  // variant="warning"
                   className="w-100 py-2 fs-4"
                   onClick={handleNext}
                   disabled={phone.length !== 10} // Disable button if phone is invalid

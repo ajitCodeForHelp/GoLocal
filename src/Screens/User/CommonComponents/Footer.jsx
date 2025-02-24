@@ -22,26 +22,26 @@ const Footer = () => {
     if (!isVisible) return null; // Hide footer when condition is met
 
     return (
-        <footer className="footer bg-dark text-light pt-5 pb-4 d-flex justify-content-center">
+        <footer className="footer pt-5 pb-4 d-flex justify-content-center">
             <div className="roww">
                 <Row>
                     <Col md={3}>
-                        <h2>Better Think</h2>
+                        <h2>GoLocal</h2>
                     </Col>
                     <Col md={2}>
                         <ul className="list-unstyled">
-                            <li className="pb-2"><a href="/" className="text-light">Get Franchisee</a></li>
-                            <li className="pb-2"><a href="/" className="text-light">CEO Speaks</a></li>
-                            <li className="pb-2"><a href="/" className="text-light">Chat With Us</a></li>
-                            <li className="pb-2"><a href="/" className="text-light">Contact Us</a></li>
+                            <li className="pb-2"><a href="/" className="">Get Franchisee</a></li>
+                            <li className="pb-2"><a href="/" className="">CEO Speaks</a></li>
+                            <li className="pb-2"><a href="/" className="">Chat With Us</a></li>
+                            <li className="pb-2"><a href="/" className="">Contact Us</a></li>
                         </ul>
                     </Col>
                     <Col md={2}>
                         <ul className="list-unstyled">
-                            <li className="pb-2"><a href="/" className="text-light">Apply For Job</a></li>
-                            <li className="pb-2"><a href="/" className="text-light">Privacy Policy</a></li>
-                            <li className="pb-2"><a href="/" className="text-light">Terms & Conditions</a></li>
-                            <li className="pb-2"><a href="/" className="text-light">Book a Table</a></li>
+                            <li className="pb-2"><a href="/" className="">Apply For Job</a></li>
+                            <li className="pb-2"><a href="/" className="">Privacy Policy</a></li>
+                            <li className="pb-2"><a href="/" className="">Terms & Conditions</a></li>
+                            <li className="pb-2"><a href="/" className="">Book a Table</a></li>
                         </ul>
                     </Col>
                     <Col md={3} className="text-center">

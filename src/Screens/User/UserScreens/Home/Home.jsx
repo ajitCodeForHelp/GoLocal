@@ -9,7 +9,7 @@ function Home (){
         <>
         {/* <Header/>
         <Banner/> */}
-        <Merge/>
+        {/* <Merge/> */}
         {/* <Footer/> */}
         </>
     )

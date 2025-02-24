@@ -27,8 +27,8 @@ function Profile() {
     <div className="profile container" style={{ width: "30%" }}>
       <div>
         {/* Profile Header */}
-        <div className="d-flex btn align-items-center mb-3 pb-3" style={{ padding: "15px", backgroundColor: "white", borderRadius: "5px 5px 0px 0px", boxShadow: "0 4px 14px #0000000f" }}>
-          <BsPersonCircle size={50} className="text-secondary" />
+        <div className=" profile-header d-flex btn align-items-center mb-3 pb-3" style={{ padding: "15px", borderRadius: "5px 5px 0px 0px", boxShadow: "0 4px 14px #0000000f" }}>
+          <BsPersonCircle size={50} className="" />
           <div className="ms-3">
             <h6 className="mb-0">+91-9982236403</h6>
           </div>
@@ -52,7 +52,7 @@ function Profile() {
           {/* Settings Dropdown */}
           <div className="btn mb-2" style={{ padding: "0px" }}>
             <button
-              className="list-group-item list-group-item-action d-flex align-items-center bg-white"
+              className="list-group-item list-group-item-action d-flex align-items-center "
               onClick={() => setShowSettings(!showSettings)}
               style={{ padding: "15px" }}
             >

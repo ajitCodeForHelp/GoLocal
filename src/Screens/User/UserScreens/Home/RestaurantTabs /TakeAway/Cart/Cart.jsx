@@ -38,10 +38,10 @@ function Cart({ show, handleClose }) {
         <>
             {/* ✅ Desktop Sidebar Cart (Visible Only When Screen >1000px) */}
             {!isMobile && (
-                <div className="cat-tab" style={{ width: "27%", backgroundColor: "white" }}>
+                <div className="cat-tab" style={{ width: "27%" }}>
                     <ul className="p-0 mb-0">
                         <li className="li d-flex align-items-center justify-content-between p-3"
-                            style={{ position: "sticky", top: 0, backgroundColor: "black", zIndex: 10, borderBottom: "1px solid #ddd" }}>
+                            style={{ position: "sticky", top: 0, zIndex: 10, borderBottom: "1px solid #ddd" }}>
                             <h4 className="p-0 m-0 fs-3 ml-2">Cart</h4> <FaShoppingCart />
                         </li>
                         <div className="container mt-2 p-3" style={{ maxWidth: "400px", background: "#fff" }}>

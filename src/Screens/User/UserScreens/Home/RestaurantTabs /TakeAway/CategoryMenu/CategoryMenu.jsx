@@ -30,13 +30,12 @@ function CategoryMenu() {
     ]
     return (
         <>
-            <div className="cat-tab" style={{ width: "18%", backgroundColor: "white" }}>
+            <div className="cat-tab" style={{ width: "18%"}}>
                 <ul className="p-0 mb-0">
                     <li className="li d-flex align-items-center p-3"
                         style={{
                             position: "sticky",
                             top: 0,
-                            backgroundColor: "black",
                             zIndex: 10,
                             borderBottom: "1px solid #ddd"
                         }}>

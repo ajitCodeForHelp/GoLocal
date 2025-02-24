@@ -66,7 +66,7 @@ function Header() {
     return (
         <>
             {/* Navbar */}
-            <Navbar expand="lg" className="navbar bg-dark py-4 d-flex justify-content-center" style={{ position: "sticky", top: 0, zIndex: 100, width: "100%" }}>
+            <Navbar expand="lg" className="navbar py-4 d-flex justify-content-center" style={{ position: "sticky", top: 0, zIndex: 100, width: "100%" }}>
 
                 <div className="roww d-flex justify-content-between align-items-center">
                     {/* Menu Button for Mobile */}
@@ -93,7 +93,7 @@ function Header() {
                     {/* Search Bar */}
                     <div className="search-bar position-relative" style={{ width: "40%" }} ref={dropdownRef}>
                         <div
-                            className="bg-white px-3 py-1 rounded d-flex justify-content-between align-items-center"
+                            className="input px-3 py-1 rounded d-flex justify-content-between align-items-center"
                             style={{ cursor: "pointer", border: "1px solid #ccc" }}
                             onClick={() => setShowDropdown(!showDropdown)}
                         >
@@ -108,7 +108,7 @@ function Header() {
                         </div>
 
                         {showDropdown && (
-                            <div className="position-absolute w-100 bg-white shadow rounded mt-1" style={{ zIndex: 1000 }}>
+                            <div className="drop position-absolute w-100 shadow rounded mt-1" style={{ zIndex: 1000 }}>
                                 <div style={{ maxHeight: "200px", overflowY: "auto" }}>
                                     {filteredLocations.map((loc, index) => (
                                         <div
@@ -130,22 +130,22 @@ function Header() {
                     </div>
 
                     {/* Buttons (Hidden in Mobile) */}
-                    <div className="d-none d-lg-flex align-items-center gap-3">
-                        <Button variant="warning" onClick={() => setShowModal(true)}>Book a Table</Button>
+                    <div className="btn d-none d-lg-flex align-items-center gap-3">
+                        <Button  onClick={() => setShowModal(true)}>Book a Table</Button>
                         <Link to="/restaurantlocation">
-                            <span className="text-warning fs-5"><FaMapMarkerAlt /> Location</span>
+                            <span className="fs-5"><FaMapMarkerAlt /> Location</span>
                         </Link>
                         <Link to="/myorder">
-                            <FaUser className="text-warning fs-5" />
+                            <FaUser className="fs-5" />
                         </Link>
-                        <Button variant="warning" onClick={handleLoginClick}>Login</Button>
+                        <Button onClick={handleLoginClick}>Login</Button>
                     </div>
                 </div>
             </Navbar>
 
             {/* Sidebar Menu */}
             <Offcanvas show={show} onHide={() => setShow(false)} placement="start" className="res-header custom-sidebar">
-                <Offcanvas.Header className="bg-warning text-dark" style={{ padding: "20px, 5px" }}>
+                <Offcanvas.Header className="slider-header" style={{ padding: "20px, 5px" }}>
                     <FaArrowLeft className="fs-4" role="button" onClick={() => setShow(false)} />
                 </Offcanvas.Header>
                 <Offcanvas.Body>
@@ -162,7 +162,7 @@ function Header() {
                                     background: "#fff" // Ensuring contrast
                                 }}
                             >
-                                <span className="me-2" style={{ color: "orange" }}>{item.icon}</span>
+                                <span className="me-2">{item.icon}</span>
                                 {item.name}
                             </Nav.Link>
                         ))}

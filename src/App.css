@@ -31,7 +31,7 @@ li {
 input:focus {
     outline: none !important;
     box-shadow: none !important;
-    background-color: white !important;
+    background:var(--white) !important;
 }
 
 select:focus {
@@ -39,12 +39,104 @@ select:focus {
     box-shadow: none !important;
     background-color: white !important;
 }
-
+:root {
+    --poppins: 'Poppins', sans-serif;
+    --lato: 'Lato', sans-serif;
+    --light: #F9F9F9;
+    --blue: #3C91E6;
+    --light-blue: #CFE8FF;
+    --grey: #eee;
+    --dark-grey: #AAAAAA;
+    --dark: #342E37;
+    --red: #DB504A;
+    --yellow: #FFCE26;
+    --light-yellow: #FFF2C6;
+    --orangee: #ffc107;
+    --light-orange: #FFE0D3;
+    --form-label: #1f2937;
+    --label-color: #4b5563;
+    --input-border-color: #e5e7eb;
+    --black:rgb(0, 0, 0);
+    --white:  rgb(255, 255, 255);
+}
+/* ---navbar------ */
+.navbar {
+    background: var(--black);
+}
+.navbar .nav-res h2{
+    color:  var(--orangee);
+}
+.navbar .search-bar .input{
+    background-color: var(--white);
+}
+.navbar .search-bar .input input{
+    background-color: var(--white);
+}
+.navbar .search-bar .drop{
+    background-color: var(--white);
+}
+.navbar .roww .btn button{
+    color:  var(--black);
+    background: var(--orangee);
+    border: none;
+}
+.navbar .roww .btn span{
+    color:  var(--orangee);
+}
+.navbar .roww .btn svg{
+    color:  var(--orangee);
+}
+.res-header .slider-header {
+    background-color: var(--orangee);
+    color:  var(--black);
+}
+.res-header .menu-item span{
+    color:  var(--orangee) !important;
+}
+.main .res-tab{
+    background-color: var(--white);
+}
+.main .roww .button {
+background-color: var(--grey) !important;
+}
+.cat-tab {
+    background-color: var(--white);
+}
+.cat-tab .li{
+    background-color: var(--black);
+}
+.footer {
+    background-color: var(--black);
+    color:  var(--white) !important;
+}
+.footer h2{
+    color: var(--orangee);
+}
+.footer .roww ul li a{
+    color: var(--white) !important;
+}
+.table-book .modal-head {
+    background-color: var(--black);
+    color: var(--white) !important;
+}
+.modern-login-container button{
+    background-color: var(--orangee) !important;
+    color:  var(--black) !important;
+    border: none;
+}
+.profile .profile-header {
+    background-color: var(--white) !important;
+    color: var(--black);
+}
+.profile .list-group .btn .list-group-item {
+    background-color: var(--white);
+}
 /* ------Restaurant-Tabs------ */
 .res-tab ul li h4 {
     padding-top: 7px;
     font-size: 20px;
     font-weight: 300;
+    /* background-color: ; */
 }
 
 .res-tab ul li {
@@ -65,8 +157,8 @@ select:focus {
 
 .cat-tab .li {
     font-size: 25px;
-    background-color: black;
-    color: orange;
+    background-color:var(--black);
+    color: var(--orangee);
     border-radius: 10px 10px 0px 0px;
 }
 
@@ -97,19 +189,19 @@ select:focus {
 
 /* -----Merge----- */
 .main {
-    background-color: #efecec;
+    background-color: var(--grey);
 }
 
 .main .btn button {
-    background-color: #efecec;
+    background-color: var(--white);
 }
 
 .main .btn button:hover {
-    color: orange;
+    color: var(--orangee);
 }
 
 .modal-header button .btn-close {
-    color: white;
+    color: var(--white);
 }
 
 .modal-open .fade {
@@ -126,7 +218,7 @@ select:focus {
 }
 
 .profile button:hover {
-    color: orange;
+    color: var(--orangee);
 }
 
 .modal-content {
@@ -236,7 +328,7 @@ select:focus {
 
 .overlay-text {
     position: absolute;
-    color: white;
+    color:var(--white);
     font-size: 24px;
     font-weight: bold;
     text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
@@ -303,6 +395,7 @@ select:focus {
     .menu-tab .container .add-now {
         width: 90px !important;
         height: 27px !important;
+        font-size: .8 rem;
     }
 
     .footer {

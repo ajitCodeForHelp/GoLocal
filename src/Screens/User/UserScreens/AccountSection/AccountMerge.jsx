@@ -15,13 +15,13 @@ function AccountMerge({ getComponent }) {
                 <div className="roww" style={{ paddingTop: "10px", paddingBottom: "15px", }}>
                     <div className=" btn p-3">
                         <Link to="/">
-                            <button style={{ border: "none" }}>Home <span><GrFormNext /></span></button>
+                            <button className="button" style={{ border: "none" }}>Home <span><GrFormNext /></span></button>
                         </Link>
                         <Link to="/myorder">
-                            <button style={{ border: "none" }}>Account <span><GrFormNext /></span></button>
+                            <button className="button"  style={{ border: "none" }}>Account <span><GrFormNext /></span></button>
                         </Link>
                         <Link to="/myorder">
-                            <button style={{ border: "none" }}>My Order <span><GrFormNext /></span></button>
+                            <button className="button"  style={{ border: "none" }}>My Order <span><GrFormNext /></span></button>
                         </Link>
                     </div>
                     {/* <NavButtons /> */}
