@@ -15,9 +15,8 @@ import TableBook from "../Screens/User/UserScreens/Home/TableBooking/TableBookin
 import MyOrderParent from "../Screens/User/UserScreens/AccountSection/MyOrder/MyOrderParent";
 import AddressParent from "../Screens/User/UserScreens/AccountSection/MyAddress/AddressParent";
 import LoginPage from "../Screens/Admin/CommonComponents/LoginPage";
-import TakeAwayParent from "../Screens/User/UserScreens/Home/RestaurantTabs /TakeAway/TakeAwayParent";
+import TakeAwayParent from "../Screens/User/UserScreens/Home/RestaurantTabs/TakeAway/TakeAwayParent";
 // import Login from "../Screens/User/UserScreens/LoginPage/Login";
-
 
 
 function Routing() {
