@@ -6,19 +6,16 @@ import img from "../../../../../../../Assets/Images/FruitPunch.jpg";
 
 function MenuItems() {
     const [items, setItems] = useState([
-        { id: 1, name: "Fruit Punch", description: "Mango Juice + Fruit Chunks & Vanilla Ice Cream", price: 219, oldPrice: 299, image: img, quantity: 15 },
+        { id: 1, name: "Fruit Punch", description: "Mango Juice + Fruit Chunks & Vanilla Ice Cream", price: 219, oldPrice: 299, image: img, quantity: 1 },
         { id: 2, name: "Evolution", description: "Passion Fruit + Strawberry + Lemon & Pineapple Juice", price: 219, oldPrice: 299, image: img, quantity: 0 },
         { id: 3, name: "Minty Melon", description: "Mint Leaves + Mango Crush + Mint Syrup & Mango Juice", price: 219, oldPrice: 299, image: img, quantity: 0 },
         { id: 4, name: "Evolution", description: "Passion Fruit + Strawberry + Lemon & Pineapple Juice", price: 219, oldPrice: 299, image: img, quantity: 0 },
         { id: 5, name: "Minty Melon", description: "Mint Leaves + Mango Crush + Mint Syrup & Mango Juice", price: 219, oldPrice: 299, image: img, quantity: 0 },
     ]);
 
-    // Increase quantity
     const increment = (id) => {
         setItems(items.map(item => item.id === id ? { ...item, quantity: item.quantity + 1 } : item));
     };
-
-    // Decrease quantity (Set quantity to 1 if it's 0)
     const decrement = (id) => {
         setItems(items.map(item =>
             item.id === id ? { ...item, quantity: item.quantity > 0 ? item.quantity - 1 : 1 } : item

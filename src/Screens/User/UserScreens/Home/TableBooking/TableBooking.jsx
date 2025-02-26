@@ -3,6 +3,7 @@ import { Modal, Button, Form } from "react-bootstrap";
 import { IoClose } from "react-icons/io5";
 
 function TableBook({ show, handleClose }) {
+
     const [formData, setFormData] = useState({
         restaurant: "",
         name: "",
@@ -12,7 +13,6 @@ function TableBook({ show, handleClose }) {
         occasion: "",
         people: "",
     });
-
     const handleChange = (e) => {
         setFormData({ ...formData, [e.target.name]: e.target.value });
     };

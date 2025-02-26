@@ -12,7 +12,7 @@ function Merge({ getComponent }) {
     const location = useLocation(); // Get current path
 
     const res = [
-        { btn: "Delivery", icon: <MdDeliveryDining />, link: "/delivery" },
+        { btn: "Delivery", icon: <MdDeliveryDining style={{ fontSize: "22px" }} />, link: "/delivery" },
         { btn: "Take Away", icon: <FaBasketShopping />, link: "/" },
         { btn: "Dine In", icon: <ImSpoonKnife />, link: "/dinein" },
         { btn: "Steal Deals", icon: <FaBottleWater />, link: "/stealdeals" },
@@ -34,23 +34,25 @@ function Merge({ getComponent }) {
                         }}>
                             <ul className="res-buttons p-0 d-flex justify-content-around align-items-center">
                                 {res.map((itm, index) => (
-                                    <li 
-                                        key={index} 
-                                        className="d-flex justify-content-center align-items-center m-2"
-                                        style={{ 
-                                            minWidth: "120px", 
-                                            padding: "5px 30px", 
-                                            backgroundColor: location.pathname === itm.link ? "orange" : "black", 
-                                            borderRadius: "5px" 
-                                        }}
-                                    >
-                                        <Link to={itm.link} className="option-button" style={{ textDecoration: "none" }}>
-                                            <h4 className="d-flex align-items-center" style={{ gap: "10px", color: location.pathname === itm.link ? "white" : "orange" }}>
+                                    <Link to={itm.link} className="option-button" style={{ textDecoration: "none" }}>
+                                        <li
+                                            key={index}
+                                            className="d-flex justify-content-center align-items-center m-2"
+                                            style={{
+                                                minWidth: "120px",
+                                                padding: "5px 30px",
+                                                backgroundColor: location.pathname === itm.link ? "orange" : "black",
+                                                borderRadius: "5px"
+                                            }}
+                                        >
+
+                                            <h4 className="d-flex align-items-center" style={{ gap: "5px", color: location.pathname === itm.link ? "white" : "orange" }}>
                                                 {itm.icon}
                                                 {itm.btn}
                                             </h4>
-                                        </Link>
-                                    </li>
+
+                                        </li>
+                                    </Link>
                                 ))}
                             </ul>
                         </div>
@@ -68,4 +70,4 @@ function Merge({ getComponent }) {
 }
 
 export default Merge;
- 
+

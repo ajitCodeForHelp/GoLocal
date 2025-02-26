@@ -16,6 +16,8 @@ import MyOrderParent from "../Screens/User/UserScreens/AccountSection/MyOrder/My
 import AddressParent from "../Screens/User/UserScreens/AccountSection/MyAddress/AddressParent";
 import LoginPage from "../Screens/Admin/CommonComponents/LoginPage";
 import TakeAwayParent from "../Screens/User/UserScreens/Home/RestaurantTabs/TakeAway/TakeAwayParent";
+import DineInParent from "../Screens/User/UserScreens/Home/RestaurantTabs/DineIn/DineInParent";
+import DeliveryParent from "../Screens/User/UserScreens/Home/RestaurantTabs/Delivery/DeliveryParent";
 // import Login from "../Screens/User/UserScreens/LoginPage/Login";
 
 
@@ -49,6 +51,8 @@ function Routing() {
                 <Route path="/myaddress" element={<AddressParent />} />
                 {/* <Route path="/login" element={<Login />} /> */}
                 <Route path="/" element={<TakeAwayParent />} />
+                <Route path="/dinein" element={<DineInParent />} />
+                <Route path="/delivery" element={<DeliveryParent />} />
             </Routes>
 
         </>

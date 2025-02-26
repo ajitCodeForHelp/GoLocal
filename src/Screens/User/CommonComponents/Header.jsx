@@ -132,9 +132,9 @@ function Header() {
                     {/* Buttons (Hidden in Mobile) */}
                     <div className="btn d-none d-lg-flex align-items-center gap-3">
                         <Button  onClick={() => setShowModal(true)}>Book a Table</Button>
-                        <Link to="/restaurantlocation">
+                        {/* <Link to="/restaurantlocation">
                             <span className="fs-5"><FaMapMarkerAlt /> Location</span>
-                        </Link>
+                        </Link> */}
                         <Link to="/myorder">
                             <FaUser className="fs-5" />
                         </Link>
