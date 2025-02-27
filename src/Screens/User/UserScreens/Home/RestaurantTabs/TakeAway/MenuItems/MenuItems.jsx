@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Button, Form, InputGroup } from "react-bootstrap";
+import { Button, Form, InputGroup, Modal } from "react-bootstrap";
 import { FaPencilAlt } from "react-icons/fa";
 import { MdOutlineFilterList } from "react-icons/md";
 import img from "../../../../../../../Assets/Images/FruitPunch.jpg";
@@ -39,6 +39,25 @@ function MenuItems() {
     const handleCategoryClick = (category) => {
         setActiveCategory(category);
         setActiveSubCategory(categoryData[category][0]); // Set first subcategory
+    };
+
+    const [showModal, setShowModal] = useState(false);
+    const [selectedItem, setSelectedItem] = useState(null);
+    const [newName, setNewName] = useState("");
+
+    // Open modal and set selected item
+    const handleShowModal = (item) => {
+        setSelectedItem(item);
+        setNewName(item.name);
+        setShowModal(true);
+    };
+
+    // Save updated name
+    const handleSave = () => {
+        setItems(items.map(item => 
+            item.id === selectedItem.id ? { ...item, name: newName } : item
+        ));
+        setShowModal(false);
     };
 
     return (
@@ -107,7 +126,7 @@ function MenuItems() {
 
                                     {item.quantity > 0 ? (
                                         <div className="btn-a d-flex align-items-center">
-                                            <Button variant="outline-warning" className="p-1 border-0 me-2">
+                                            <Button variant="outline-warning" className="p-1 border-0 me-2" onClick={() => handleShowModal(item)}>
                                                 <FaPencilAlt />
                                             </Button>
 
@@ -141,7 +160,7 @@ function MenuItems() {
                                                 <Button
                                                     variant="warning"
                                                     className="animation-h add-now border-0 d-flex align-items-center justify-content-center"
-                                                    style={{ width: "100%", height: "35px", backgroundColor: "transparent", color: "black", border: "none", padding:"0px 11px" }}
+                                                    style={{ width: "100%", height: "35px", backgroundColor: "transparent", color: "black", border: "none", padding: "0px 11px" }}
                                                     onClick={() => decrement(item.id)}
                                                 >
                                                     Add Now
@@ -155,6 +174,30 @@ function MenuItems() {
                     ))}
                 </div>
             </div>
+
+
+
+            <Modal show={showModal} onHide={() => setShowModal(false)} centered>
+                <Modal.Header closeButton className="bg-black text-white">
+                    <Modal.Title>Edit Item</Modal.Title>
+                </Modal.Header>
+                <Modal.Body>
+                    <Form>
+                        <Form.Group>
+                            <Form.Label>Item Name</Form.Label>
+                            <Form.Control
+                                type="text"
+                                value={newName}
+                                onChange={(e) => setNewName(e.target.value)}
+                            />
+                        </Form.Group>
+                    </Form>
+                </Modal.Body>
+                <Modal.Footer>
+                    <Button variant="secondary" onClick={() => setShowModal(false)}>Cancel</Button>
+                    <Button variant="warning" className="fw-bold text-dark" onClick={handleSave}>Save</Button>
+                </Modal.Footer>
+            </Modal>
         </>
     );
 }

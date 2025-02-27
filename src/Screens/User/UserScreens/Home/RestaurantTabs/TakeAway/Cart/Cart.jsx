@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Button, Modal } from "react-bootstrap";
+import { Button, Form, Modal } from "react-bootstrap";
 import { FaPencilAlt, FaShoppingCart } from "react-icons/fa";
 import emptyCartImage from "../../../../../../../Assets/Images/empty-cart.png";
 
@@ -11,9 +11,9 @@ function Cart({ show, handleClose }) {
         { id: 4, text: "Cold Drink", price: 219, quantity: 1 },
         { id: 5, text: "Fruit Punch", price: 219, quantity: 1 },
     ]);
-    
+
     const [isMobile, setIsMobile] = useState(window.innerWidth <= 1000);
-    
+
     useEffect(() => {
         const handleResize = () => {
             const mobile = window.innerWidth <= 1000;
@@ -42,6 +42,25 @@ function Cart({ show, handleClose }) {
 
     const totalPrice = cartItems.reduce((acc, item) => acc + item.price * item.quantity, 0);
 
+
+    const [showModal, setShowModal] = useState(false);
+    const [selectedItem, setSelectedItem] = useState(null);
+    const [newName, setNewName] = useState("");
+
+    // Open modal and set selected item
+    const handleShowModal = (item) => {
+        setSelectedItem(item);
+        setNewName(item.name);
+        setShowModal(true);
+    };
+
+    // Save updated name
+    const handleSave = () => {
+        setCartItems(cartItems.map(item =>
+            item.id === selectedItem.id ? { ...item, name: newName } : item
+        ));
+        setShowModal(false);
+    };
     return (
         <>
             {!isMobile && (
@@ -69,7 +88,7 @@ function Cart({ show, handleClose }) {
 
                                                 {/* Edit & Quantity Controls */}
                                                 <div className="d-flex align-items-center">
-                                                    <Button variant="outline-warning" className="p-1 border-0" style={{ marginRight: "10px" }}>
+                                                    <Button variant="outline-warning" className="p-1 border-0" style={{ marginRight: "10px" }} onClick={() => handleShowModal(item)}>
                                                         <FaPencilAlt />
                                                     </Button>
 
@@ -100,6 +119,28 @@ function Cart({ show, handleClose }) {
                 </div>
             )}
 
+            <Modal show={showModal} onHide={() => setShowModal(false)} centered>
+                <Modal.Header closeButton className="bg-black text-white">
+                    <Modal.Title>Edit Item</Modal.Title>
+                </Modal.Header>
+                <Modal.Body>
+                    <Form>
+                        <Form.Group>
+                            <Form.Label>Item Name</Form.Label>
+                            <Form.Control
+                                type="text"
+                                value={newName}
+                                onChange={(e) => setNewName(e.target.value)}
+                            />
+                        </Form.Group>
+                    </Form>
+                </Modal.Body>
+                <Modal.Footer>
+                    <Button variant="secondary" onClick={() => setShowModal(false)}>Cancel</Button>
+                    <Button variant="warning" className="fw-bold text-dark" onClick={handleSave}>Save</Button>
+                </Modal.Footer>
+            </Modal>
+
             {/* ✅ Mobile View (≤1000px) → Floating Cart Button */}
             {isMobile && (
                 <>
@@ -108,7 +149,7 @@ function Cart({ show, handleClose }) {
                             <Modal.Title>Your Cart</Modal.Title>
                         </Modal.Header>
                         <Modal.Body style={{ maxHeight: "400px", overflowY: "auto" }}>
-                            {cartItems.length === 0 ? ( 
+                            {cartItems.length === 0 ? (
                                 <div className="text-center">
                                     <img src={emptyCartImage} alt="Empty Cart" style={{ width: "100%", maxWidth: "250px" }} />
                                 </div>
@@ -125,7 +166,7 @@ function Cart({ show, handleClose }) {
 
                                                 {/* Edit & Quantity Controls */}
                                                 <div className="d-flex align-items-center">
-                                                    <Button variant="outline-warning" className="p-1 border-0" style={{ marginRight: "10px" }}>
+                                                    <Button variant="outline-warning" className="p-1 border-0" style={{ marginRight: "10px" }} onClick={() => handleShowModal(item)}>
                                                         <FaPencilAlt />
                                                     </Button>
 
