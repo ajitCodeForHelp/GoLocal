@@ -1,5 +1,5 @@
 import React from "react";
-import { Route, Routes,} from "react-router-dom";
+import { Route, Routes, } from "react-router-dom";
 import Auth from "../Utilities/Auth";
 import Dashboard from "../Screens/Admin/AdminScreens/Dashboard/Dashboard";
 import MergeComponents from "../Screens/Admin/CommonComponents/MergeComponents";
@@ -16,32 +16,93 @@ import MyOrderParent from "../Screens/User/UserScreens/AccountSection/MyOrder/My
 import AddressParent from "../Screens/User/UserScreens/AccountSection/MyAddress/AddressParent";
 import LoginPage from "../Screens/Admin/CommonComponents/LoginPage";
 import TakeAwayParent from "../Screens/User/UserScreens/Home/RestaurantTabs/TakeAway/TakeAwayParent";
-// import Login from "../Screens/User/UserScreens/LoginPage/Login";
+import Customization from "../Screens/Admin/AdminScreens/Customization/Customization";
+import AddCustomization from "../Screens/Admin/AdminScreens/Customization/AddCustomization";
+import Restaurants from "../Screens/Admin/AdminScreens/Restaurants/Restaurants";
+import AddRestaurant from "../Screens/Admin/AdminScreens/Restaurants/AddRestaurant";
+import AddNewVendor from "../Screens/Admin/AdminScreens/Vendor/AddNewVendor";
+import Vendor from "../Screens/Admin/AdminScreens/Vendor/Vendor";
+import Login from "../Screens/Admin/Auth/Login";
 
 
 function Routing() {
 
-
+    const adminPages = [
+        {
+            id: 1,
+            path: 'dashboard',
+            component: Dashboard,
+        },
+        {
+            id: 2,
+            path: 'item',
+            component: ItemList,
+        },
+        {
+            id: 3,
+            path: 'category',
+            component: Category,
+        },
+        {
+            id: 4,
+            path: 'order',
+            component: OrderList,
+        },
+        {
+            id: 5,
+            path: 'addItem',
+            component: AddItem,
+        },
+        {
+            id: 6,
+            path: 'addCategory',
+            component: AddCategory,
+        },
+        {
+            id: 7,
+            path: 'customization',
+            component: Customization,
+        },
+        {
+            id: 8,
+            path: 'addCustomization',
+            component: AddCustomization,
+        },
+        {
+            id: 9,
+            path: 'restaurants',
+            component: Restaurants,
+        },
+        {
+            id: 10,
+            path: 'addRestaurants',
+            component: AddRestaurant,
+        },
+        {
+            id: 11,
+            path: "newVendor",
+            component: AddNewVendor,
+        },
+        {
+            id: 12,
+            path: "vendor",
+            component: Vendor,
+        }
+    ]
     return (
         <>
             <Routes>
                 <Route path="/adminlogin" element={<LoginPage />} />
+                <Route path="/login" element={<Login />} />
                 <Route path="/admin" element={<Auth />}>
-                    <Route path="dashboard" element={
-                        <TenantProvider><MergeComponents getComponent={<Dashboard />} /></TenantProvider>} />
-                    <Route path="item" element={
-                        <TenantProvider><MergeComponents getComponent={<ItemList />} /></TenantProvider>} />
-                    <Route path="category" element={
-                        <TenantProvider><MergeComponents getComponent={<Category />} /></TenantProvider>} />
-                    <Route path="order" element={
-                        <TenantProvider><MergeComponents getComponent={<OrderList />} /></TenantProvider>} />
-                    <Route path="addItem" element={
-                        <TenantProvider><MergeComponents getComponent={<AddItem />} /></TenantProvider>} />
-                    <Route path="addCategory" element={
-                        <TenantProvider><MergeComponents getComponent={<AddCategory />} /></TenantProvider>} />
+                    {
+                        adminPages.map((route) => {
+                            return (
+                                <Route path={route.path} element={<TenantProvider><MergeComponents getComponent={<route.component />} /></TenantProvider>} />
+                            )
+                        })
+                    }
                 </Route>
-                
-
                 <Route path="/home" element={<Home />} />
                 {/* <Route path="/restaurantlocation" element={<RestaurantLocation />} /> */}
                 <Route path="/tablebook" element={<TableBook />} />

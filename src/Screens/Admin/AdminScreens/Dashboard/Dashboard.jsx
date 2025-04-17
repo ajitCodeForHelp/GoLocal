@@ -12,56 +12,56 @@ function Dashboard() {
     return (
         <>
             <main>
-                <div class="head-title">
-                    <div class="left">
+                <div className="head-title">
+                    <div className="left">
                         <h1>Dashboard</h1>
-                        <ul class="breadcrumb">
+                        <ul className="breadcrumb">
                             <li>
                                 <a href="#">Dashboard</a>
                             </li>
-                            <li><i class='bx bx-chevron-right' ></i></li>
+                            <li><i className='bx bx-chevron-right' ></i></li>
                             <li>
-                                <a class="active" href="#">Home</a>
+                                <a className="active" href="#">Home</a>
                             </li>
                         </ul>
                     </div>
-                    {/* <a href="#" class="btn-download">
-                        <i class='bx bxs-cloud-download bx-fade-down-hover' ></i>
-                        <span class="text">Get PDF</span>
+                    {/* <a href="#" className="btn-download">
+                        <i className='bx bxs-cloud-download bx-fade-down-hover' ></i>
+                        <span className="text">Get PDF</span>
                     </a> */}
                 </div>
 
-                <ul class="box-info">
+                <ul className="box-info">
                     <li>
                         <span className="bx bxs-calendar-check"><FaCalendarCheck /></span>
-                        <span class="text">
+                        <span className="text">
                             <h3>1020</h3>
                             <p>New Order</p>
                         </span>
                     </li>
                     <li>
-                        <span className="bx bxs-group"><MdPeopleAlt/></span>
-                        <span class="text">
-                            <h3><LiaRupeeSignSolid/>2834</h3>
+                        <span className="bx bxs-group"><MdPeopleAlt /></span>
+                        <span className="text">
+                            <h3><LiaRupeeSignSolid />2834</h3>
                             <p>Cart</p>
                         </span>
                     </li>
                     <li>
-                        <span className="bx bxs-dollar-circle"><FaMoneyBillTrendUp/></span>
-                        <span class="text">
-                            <h3><LiaRupeeSignSolid/>2543.00</h3>
+                        <span className="bx bxs-dollar-circle"><FaMoneyBillTrendUp /></span>
+                        <span className="text">
+                            <h3><LiaRupeeSignSolid />2543.00</h3>
                             <p>Total Sales</p>
                         </span>
                     </li>
                 </ul>
 
 
-                <div class="table-data">
-                    <div class="order">
-                        <div class="head">
+                <div className="table-data">
+                    <div className="order">
+                        <div className="head">
                             <h3>Recent Orders</h3>
-                            <i class='bx bx-search' ></i>
-                            <i class='bx bx-filter' ></i>
+                            <i className='bx bx-search' ></i>
+                            <i className='bx bx-filter' ></i>
                         </div>
                         <table>
                             <thead>
@@ -75,73 +75,73 @@ function Dashboard() {
                                 <tr>
                                     <td>
                                         <img src="https://placehold.co/600x400/png" />
-                                        <p>Micheal John</p>
+                                        <p className="m-0">Micheal John</p>
                                     </td>
                                     <td>18-10-2021</td>
-                                    <td><span class="status completed">Completed</span></td>
+                                    <td><span className="status completed">Completed</span></td>
                                 </tr>
                                 <tr>
                                     <td>
                                         <img src="https://placehold.co/600x400/png" />
-                                        <p>Ryan Doe</p>
+                                        <p className="m-0">Ryan Doe</p>
                                     </td>
                                     <td>01-06-2022</td>
-                                    <td><span class="status pending">Pending</span></td>
+                                    <td><span className="status pending">Pending</span></td>
                                 </tr>
                                 <tr>
                                     <td>
                                         <img src="https://placehold.co/600x400/png" />
-                                        <p>Tarry White</p>
+                                        <p className="m-0">Tarry White</p>
                                     </td>
                                     <td>14-10-2021</td>
-                                    <td><span class="status process">Process</span></td>
+                                    <td><span className="status process">Process</span></td>
                                 </tr>
                                 <tr>
                                     <td>
                                         <img src="https://placehold.co/600x400/png" />
-                                        <p>Selma</p>
+                                        <p className="m-0">Selma</p>
                                     </td>
                                     <td>01-02-2023</td>
-                                    <td><span class="status pending">Pending</span></td>
+                                    <td><span className="status pending">Pending</span></td>
                                 </tr>
                                 <tr>
                                     <td>
                                         <img src="https://placehold.co/600x400/png" />
-                                        <p>Andreas Doe</p>
+                                        <p className="m-0">Andreas Doe</p>
                                     </td>
                                     <td>31-10-2021</td>
-                                    <td><span class="status completed">Completed</span></td>
+                                    <td><span className="status completed">Completed</span></td>
                                 </tr>
                             </tbody>
                         </table>
                     </div>
-                    <div class="todo">
-                        <div class="head">
+                    <div className="todo">
+                        <div className="head">
                             <h3>Carts</h3>
-                            <i class='bx bx-plus icon'></i>
-                            <i class='bx bx-filter' ></i>
+                            <i className='bx bx-plus icon'></i>
+                            <i className='bx bx-filter' ></i>
 
                         </div>
-                        <ul class="todo-list">
-                            <li class="completed">
-                                <p>Check Inventory</p>
-                                <i class='bx bx-dots-vertical-rounded' ></i>
+                        <ul className="todo-list">
+                            <li className="completed">
+                                <p className="m-0">Check Inventory</p>
+                                <i className='bx bx-dots-vertical-rounded' ></i>
                             </li>
-                            <li class="completed">
-                                <p>Manage Delivery Team</p>
-                                <i class='bx bx-dots-vertical-rounded' ></i>
+                            <li className="completed">
+                                <p className="m-0">Manage Delivery Team</p>
+                                <i className='bx bx-dots-vertical-rounded' ></i>
                             </li>
-                            <li class="not-completed">
-                                <p>Contact Selma: Confirm Delivery</p>
-                                <i class='bx bx-dots-vertical-rounded' ></i>
+                            <li className="not-completed">
+                                <p className="m-0">Contact Selma: Confirm Delivery</p>
+                                <i className='bx bx-dots-vertical-rounded' ></i>
                             </li>
-                            <li class="completed">
-                                <p>Update Shop Catalogue</p>
-                                <i class='bx bx-dots-vertical-rounded' ></i>
+                            <li className="completed">
+                                <p className="m-0">Update Shop Catalogue</p>
+                                <i className='bx bx-dots-vertical-rounded' ></i>
                             </li>
-                            <li class="not-completed">
-                                <p>Count Profit Analytics</p>
-                                <i class='bx bx-dots-vertical-rounded' ></i>
+                            <li className="not-completed">
+                                <p className="m-0">Count Profit Analytics</p>
+                                <i className='bx bx-dots-vertical-rounded' ></i>
                             </li>
                         </ul>
                     </div>

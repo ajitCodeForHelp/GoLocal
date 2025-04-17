@@ -96,6 +96,16 @@ function AddItem() {
                             </div>
                         </div>
                         <div className="form-group">
+                            <label for="text">Customization</label>
+                            <select name="" id="">
+                                <option value="">Select</option>
+                                <option value="category1">category1</option>
+                                <option value="category1">category1</option>
+                                <option value="category1">category1</option>
+                            </select>
+                            <div className="error d-none">Please enter a valid email address</div>
+                        </div>
+                        <div className="form-group">
                             <label htmlFor="description">Description</label>
                             <textarea name="" id="description"></textarea>
                         </div>

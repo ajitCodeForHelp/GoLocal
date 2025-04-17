@@ -76,7 +76,7 @@ function Category() {
                                                     <span className="cell-label">Status:</span>
                                                     <span className="status active">Active</span>
                                                 </div>
-                                               
+
                                                 {/* <div className="product-cell stock"><span className="cell-label">Stock:</span>36</div> */}
                                                 <div className="product-cell price"><span className="status active">Active</span></div>
                                             </div>

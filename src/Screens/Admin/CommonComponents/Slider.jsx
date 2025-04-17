@@ -8,6 +8,8 @@ import { IoSettingsSharp } from "react-icons/io5";
 import { TbLogout2 } from "react-icons/tb";
 import { BsFillEmojiSmileFill } from "react-icons/bs";
 import { useTenant } from "../../../Utilities/TenantProvider";
+import { TfiLayoutListThumb } from "react-icons/tfi";
+import { FaPeopleGroup } from "react-icons/fa6";
 
 function Slider({ isSidebarHidden }) {
     const { tenant } = useTenant();
@@ -15,9 +17,11 @@ function Slider({ isSidebarHidden }) {
     const isActive = (path) => location.pathname === path;
     const menuItems = [
         { icon: <AiFillDashboard />, text: "Dashboard", path: `/admin/dashboard` },
-        { icon: <MdCategory />, text: "Category", path: `/admin/category`},
+        { icon: <FaPeopleGroup />, text: "Restaurants", path: `/admin/restaurants` },
+        { icon: <MdCategory />, text: "Category", path: `/admin/category` },
         { icon: <RiAlignItemLeftFill />, text: "Items", path: `/admin/item` },
-        { icon: <GiCometSpark />, text: "Orders",path: `/admin/order` }
+        { icon: <GiCometSpark />, text: "Orders", path: `/admin/order` },
+        { icon: <TfiLayoutListThumb />, text: "Customization", path: `/admin/customization` },
     ];
 
     return (

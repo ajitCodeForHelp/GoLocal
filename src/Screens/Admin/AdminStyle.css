@@ -1119,6 +1119,13 @@ body.dark #content nav .profile-menu li a {
     justify-content: center;
 }
 
+.tableView .product-cell.action {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
 .tableView .product-cell img {
     width: 32px;
     height: 32px;
@@ -1269,6 +1276,23 @@ body.dark #content nav .profile-menu li a {
     margin-bottom: 25px;
 }
 
+.form-inner-group .addbtn {
+    background-color: var(--blue);
+    color: var(--light);
+    padding: 13px;
+}
+
+.form-inner-group .delbtn {
+    background-color: var(--red);
+    color: var(--light);
+    padding: 13px;
+}
+
+.form-inner-group .addbtn:hover {
+    cursor: pointer;
+}
+
+
 .main-form label {
     display: block;
     margin-bottom: 8px;
@@ -1387,18 +1411,20 @@ select:focus {
 /* <-------------------------login page -------------------------------------> */
 
 /* Login Title with Left Border */
-.card-body{
+.card-body {
     padding: 0 !important;
 }
+
 .login-title {
     font-size: 22px;
     font-weight: bold;
     margin-bottom: 20px;
     text-align: left;
     padding-left: 10px;
-    border-left: 5px solid #4da18e; /* Green left border */
-  }
-  
+    border-left: 5px solid #a770ef;
+}
+/* Green left border */
+
 /* Background */
 .login-container {
     background-color: #f5f5f5;
@@ -1407,64 +1433,65 @@ select:focus {
     justify-content: center;
     align-items: center;
     position: relative;
-  }
-  
-  /* Login Card */
-  .login-card {
+}
+
+/* Login Card */
+.login-card {
     width: 450px;
-    border-radius:0 !important;
+    border-radius: 0 !important;
     border: 0px !important;
     background: white;
     position: relative;
     text-align: center;
-  }
-  
-  /* Login Title */
-  .login-title {
+}
+
+/* Login Title */
+.login-title {
     font-size: 1.8rem;
     font-weight: bold;
     padding-bottom: 15px;
     padding-top: 25px;
     margin-top: 30px;
     padding-left: 25px;
-  }
-  
-  .form{
+}
+
+.form {
     padding: 0px 25px 25px 25px;
-  }
-  /* Form Labels */
-  .form-label {
+}
+
+/* Form Labels */
+.form-label {
     font-size: 18px;
     color: gray;
     text-align: left;
     display: block;
-  }
-  
-  /* Input Fields */
-  .input-field {
+}
+
+/* Input Fields */
+.input-field {
     border: none !important;
     border-bottom: 3px solid #4da18e !important;
     border-radius: 0 !important;
     box-shadow: none;
     height: 38px;
-  }
-  
-  /* Login Button */
-  .login-btn {
+}
+
+/* Login Button */
+.login-btn {
     background-color: #4da18e !important;
     border: none !important;
     font-weight: bold !important;
     font-size: 16px !important;
     padding: 10px !important;
     transition: 0.3s !important;
-  }
-  
-  .login-btn:hover {
+}
+
+.login-btn:hover {
     background-color: #3b8671;
-  }
-  
-  /* Floating Add (+) Icon */
-  .add-icon {
+}
+
+/* Floating Add (+) Icon */
+.add-icon {
     width: 50px;
     height: 50px;
     background-color: #4da18e;
@@ -1479,14 +1506,14 @@ select:focus {
     top: 40px;
     cursor: pointer;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
-  }
-  
-  /* Bottom Left Signature */
-  .signature {
+}
+
+/* Bottom Left Signature */
+.signature {
     position: absolute;
     bottom: 20px;
     left: 30px;
     font-family: cursive;
     color: gray;
     font-size: 18px;
-  }
+}
