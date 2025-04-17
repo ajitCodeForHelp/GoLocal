@@ -89,7 +89,21 @@ function Routing() {
             id: 12,
             path: "vendor",
             component: Vendor,
-        }
+        },
+        {
+            id:13,
+            path:"vendor/edit/:id",
+            component: AddNewVendor,
+        },{
+            id: 14,
+            path: "banner",
+            component: AdminBanner,
+        },
+        {
+            id: 15,
+            path: "addbanner",
+            component: AddAdminBanner,
+        },
     ]
     return (
         <>
