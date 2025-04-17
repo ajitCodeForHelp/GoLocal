@@ -17,6 +17,7 @@ function Slider({ isSidebarHidden }) {
     const isActive = (path) => location.pathname === path;
     const menuItems = [
         { icon: <AiFillDashboard />, text: "Dashboard", path: `/admin/dashboard` },
+        { icon: <FaPeopleGroup />, text: "Vendor", path: `/admin/vendor` },
         { icon: <FaPeopleGroup />, text: "Restaurants", path: `/admin/restaurants` },
         { icon: <MdCategory />, text: "Category", path: `/admin/category` },
         { icon: <RiAlignItemLeftFill />, text: "Items", path: `/admin/item` },

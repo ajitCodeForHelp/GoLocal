@@ -87,13 +87,20 @@ function Routing() {
             id: 12,
             path: "vendor",
             component: Vendor,
-        }
-    ]
+        },
+        {
+            id: 13,
+            path: "vendor/edit/:id",
+            component: AddNewVendor,
+        },
+    ];
+    
     return (
         <>
             <Routes>
                 <Route path="/adminlogin" element={<LoginPage />} />
                 <Route path="/login" element={<Login />} />
+                <Route path="/vendorLogin" element={<Login />} />
                 <Route path="/admin" element={<Auth />}>
                     {
                         adminPages.map((route) => {

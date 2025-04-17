@@ -1,24 +1,40 @@
 import React, { useState } from "react";
 import "./LoginStyle.css";
+import { useLocation, useNavigate } from "react-router-dom";
 
 const Login = () => {
-    const BASE_URL = process.env.REACT_APP_BASR_URL;
+    const BASE_URL = process.env.REACT_APP_BASE_URL;
     const [userName, setUserName] = useState("");
     const [password, setPassword] = useState("");
+    const location = useLocation();
+
+
+    const navigate = useNavigate();
 
     const handleSubmit = async (e) => {
         e.preventDefault();
+        const isVendor = location.pathname.includes("vendorLogin");
+        const url = isVendor ? '/auth/vendor-login' : '/auth/admin-login'
         // Call your login API here
-        const res = await fetch(`${BASE_URL}/auth/vendor-login`, {
-            method: "POST",
-            body: JSON.stringify({
-                userName: userName,
-                password: password
-            })
-        });
-        const getRes = await res.json();
-        if (getRes.errorCode === 0) {
-            alert("login");
+        try {
+            const res = await fetch(`${BASE_URL}${url}`, {
+                method: "POST",
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    userName: userName,
+                    password: password,
+                })
+            });
+            const getRes = await res.json();
+            if (getRes.errorCode === 0) {
+                alert("login");
+                sessionStorage.setItem("tokenKey", getRes.responsePacket?.secretKey);
+                navigate('/admin/dashboard')
+            }
+        } catch (e) {
+            console.log(e, "error in login")
         }
     };
 
@@ -28,7 +44,7 @@ const Login = () => {
                 <h2 className="login-title">Login</h2>
                 <input
                     type="text"
-                    placeholder="email address"
+                    placeholder="User Name"
                     value={userName}
                     onChange={(e) => setUserName(e.target.value)}
                     required
@@ -36,7 +52,7 @@ const Login = () => {
                 />
                 <input
                     type="password"
-                    placeholder="password"
+                    placeholder="Password"
                     value={password}
                     onChange={(e) => setPassword(e.target.value)}
                     required

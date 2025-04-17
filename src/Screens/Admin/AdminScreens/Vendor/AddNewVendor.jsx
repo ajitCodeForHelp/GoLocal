@@ -71,20 +71,26 @@
 import React, { useState } from "react";
 import { MdOutlineFoodBank } from "react-icons/md";
 import { ImCancelCircle } from "react-icons/im";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate, useParams } from "react-router-dom";
 
 function AddNewVendor() {
-    const BASE_URL = process.env.REACT_APP_BASR_URL;
+    const BASE_URL = process.env.REACT_APP_BASE_URL;
+    const token = sessionStorage.getItem('tokenKey');
     const navigate = useNavigate();
+    const { id } = useParams();
+    const isEditMode = Boolean(id);
+    const location = useLocation();
+    const dataToUpdate = location && location.state
+
     const [formData, setFormData] = useState({
-        firstName: "",
-        lastName: "",
-        username: "",
-        password: "",
-        contactName: "",
-        contactNumber: "",
-        contactEmail: "",
-        photoImageUrl: null,
+        firstName: isEditMode ? dataToUpdate?.firstName : "",
+        lastName: isEditMode ? dataToUpdate?.lastName : "",
+        ...(!isEditMode && { username: "" }),
+        ...(!isEditMode && { password: "" }),
+        contactName: isEditMode ? dataToUpdate?.contactDetail?.contactName : "",
+        contactNumber: isEditMode ? dataToUpdate?.contactDetail?.contactNumber : "",
+        contactEmail: isEditMode ? dataToUpdate?.contactDetail?.contactEmail : "",
+        photoImageUrl: isEditMode ? dataToUpdate?.photoImageUrl : "",
     });
 
     const [imagePreview, setImagePreview] = useState(null);
@@ -120,7 +126,7 @@ function AddNewVendor() {
             firstName: formData.firstName,
             lastName: formData.lastName,
             username: formData.username,
-            password: formData.password,
+            ...(!isEditMode && { password: formData.password }),
             photoImageUrl: "", // will be replaced by uploaded URL if needed
             contactDetail: {
                 contactName: formData.contactName,
@@ -129,28 +135,29 @@ function AddNewVendor() {
             },
         };
 
-        // If image needs to be uploaded separately, do it here first
-        if (formData.photoImageUrl) {
-            const imageData = new FormData();
-            imageData.append("file", formData.photoImageUrl);
+        // // If image needs to be uploaded separately, do it here first
+        // if (formData.photoImageUrl) {
+        //     const imageData = new FormData();
+        //     imageData.append("file", formData.photoImageUrl);
 
-            try {
-                const imgRes = await fetch(``, {
-                    method: "POST",
-                    body: imageData,
-                });
-                const imgData = await imgRes.json();
-                payload.photoImageUrl = imgData.url; // adjust based on your response
-            } catch (err) {
-                console.error("Image upload failed", err);
-            }
-        }
+        //     try {
+        //         const imgRes = await fetch(``, {
+        //             method: "POST",
+        //             body: imageData,
+        //         });
+        //         const imgData = await imgRes.json();
+        //         payload.photoImageUrl = imgData.url; // adjust based on your response
+        //     } catch (err) {
+        //         console.error("Image upload failed", err);
+        //     }
+        // }
 
         try {
             const res = await fetch(`${BASE_URL}/admin/v1/vendor/save`, {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
+                    'Authorization': `Bearer ${token}`,
                 },
                 body: JSON.stringify(payload),
             });
@@ -168,12 +175,66 @@ function AddNewVendor() {
         }
     };
 
+    const handleEdit = async (e) => {
+        e.preventDefault();
+
+        const payload = {
+            firstName: formData.firstName,
+            lastName: formData.lastName,
+            photoImageUrl: "", // will be replaced by uploaded URL if needed
+            contactDetail: {
+                contactName: formData.contactName,
+                contactNumber: formData.contactNumber,
+                contactEmail: formData.contactEmail,
+            },
+        };
+
+        // // If image needs to be uploaded separately, do it here first
+        // if (formData.photoImageUrl) {
+        //     const imageData = new FormData();
+        //     imageData.append("file", formData.photoImageUrl);
+
+        //     try {
+        //         const imgRes = await fetch(``, {
+        //             method: "POST",
+        //             body: imageData,
+        //         });
+        //         const imgData = await imgRes.json();
+        //         payload.photoImageUrl = imgData.url; // adjust based on your response
+        //     } catch (err) {
+        //         console.error("Image upload failed", err);
+        //     }
+        // }
+
+        try {
+            const res = await fetch(`${BASE_URL}/admin/v1/vendor/update/${id}`, {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                    'Authorization': `Bearer ${token}`,
+                },
+                body: JSON.stringify(payload),
+            });
+            const getRes = await res.json();
+            if (getRes.errorCode === 0) {
+                alert("Vendor updated successfully!");
+                navigate(-1);
+            } else {
+                const error = await res.json();
+                console.error("Error:", error);
+                alert("Failed to add vendor");
+            }
+        } catch (err) {
+            console.error("Submit Error:", err);
+        }
+    };
+
     return (
-        <form className="main-form" onSubmit={handleSubmit}>
+        <form className="main-form" onSubmit={() => { isEditMode ? handleEdit() : handleSubmit() }}>
             <div className="form-container">
                 <div className="step active" data-step="1">
                     <div className="d-flex justify-content-between align-items-center">
-                        <h2>Add Vendor</h2>
+                        <h2>{isEditMode ? "Update Vendor" : "Add Vendor"}</h2>
                         <h2 onClick={() => navigate(-1)} role="button">
                             <ImCancelCircle />
                         </h2>
@@ -190,7 +251,7 @@ function AddNewVendor() {
                         </div>
                     </div>
 
-                    <div className="form-group d-flex justify-content-between align-items-center w-100">
+                    {!isEditMode && <div className="form-group d-flex justify-content-between align-items-center w-100">
                         <div className="form-inner-group w-50">
                             <label htmlFor="username">User Name</label>
                             <input type="text" id="username" required value={formData.username} onChange={handleChange} />
@@ -199,7 +260,7 @@ function AddNewVendor() {
                             <label htmlFor="password">Password</label>
                             <input type="password" id="password" required value={formData.password} onChange={handleChange} />
                         </div>
-                    </div>
+                    </div>}
 
                     <label>Contact Detail</label>
                     <div className="form-group d-flex justify-content-between align-items-center w-100">
