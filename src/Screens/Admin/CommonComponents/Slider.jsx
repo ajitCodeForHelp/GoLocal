@@ -10,6 +10,7 @@ import { BsFillEmojiSmileFill } from "react-icons/bs";
 import { useTenant } from "../../../Utilities/TenantProvider";
 import { TfiLayoutListThumb } from "react-icons/tfi";
 import { FaPeopleGroup } from "react-icons/fa6";
+import { TfiLayoutSlider } from "react-icons/tfi";
 
 function Slider({ isSidebarHidden }) {
     const { tenant } = useTenant();
@@ -22,6 +23,7 @@ function Slider({ isSidebarHidden }) {
         { icon: <RiAlignItemLeftFill />, text: "Items", path: `/admin/item` },
         { icon: <GiCometSpark />, text: "Orders", path: `/admin/order` },
         { icon: <TfiLayoutListThumb />, text: "Customization", path: `/admin/customization` },
+        { icon: <TfiLayoutSlider/>, text: "Banner", path: `/admin/banner` },
     ];
 
     return (

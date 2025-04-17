@@ -23,6 +23,8 @@ import AddRestaurant from "../Screens/Admin/AdminScreens/Restaurants/AddRestaura
 import AddNewVendor from "../Screens/Admin/AdminScreens/Vendor/AddNewVendor";
 import Vendor from "../Screens/Admin/AdminScreens/Vendor/Vendor";
 import Login from "../Screens/Admin/Auth/Login";
+import AdminBanner from "../Screens/Admin/AdminScreens/AdminBanner/AdminBanner";
+import AddAdminBanner from "../Screens/Admin/AdminScreens/AdminBanner/AddAdminBanner";
 
 
 function Routing() {
@@ -87,7 +89,17 @@ function Routing() {
             id: 12,
             path: "vendor",
             component: Vendor,
-        }
+        },
+        {
+            id: 13,
+            path: "banner",
+            component: AdminBanner,
+        },
+        {
+            id: 14,
+            path: "addbanner",
+            component: AddAdminBanner,
+        },
     ]
     return (
         <>
