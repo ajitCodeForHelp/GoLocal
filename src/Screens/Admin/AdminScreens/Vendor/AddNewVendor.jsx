@@ -230,7 +230,7 @@ function AddNewVendor() {
     };
 
     return (
-        <form className="main-form" onSubmit={() => { isEditMode ? handleEdit() : handleSubmit() }}>
+        <form className="main-form" onSubmit={(e) => { isEditMode ? handleEdit(e) : handleSubmit(e) }}>
             <div className="form-container">
                 <div className="step active" data-step="1">
                     <div className="d-flex justify-content-between align-items-center">
