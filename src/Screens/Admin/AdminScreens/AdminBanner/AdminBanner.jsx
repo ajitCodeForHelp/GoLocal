@@ -37,10 +37,6 @@ function AdminBanner() {
         }
     };
 
-    useEffect(() => {
-        fetchItems(currentPage); // Initial fetch
-    }, [currentPage]);
-
     const handleSearchChange = (e) => {
         setSearchTerm(e.target.value);
     };
