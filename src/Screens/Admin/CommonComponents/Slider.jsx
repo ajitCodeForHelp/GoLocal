@@ -20,11 +20,13 @@ function Slider({ isSidebarHidden }) {
         { icon: <AiFillDashboard />, text: "Dashboard", path: `/admin/dashboard` },
         { icon: <FaPeopleGroup />, text: "Vendor", path: `/admin/vendor` },
         { icon: <FaPeopleGroup />, text: "Restaurants", path: `/admin/restaurants` },
+        { icon: <TfiLayoutSlider />, text: "Banner", path: `/admin/banner` },
+        { icon: <TfiLayoutSlider />, text: "App Code", path: `/admin/appCode` },
+        { icon: <TfiLayoutSlider />, text: "Coupon", path: `/admin/coupon` },
         { icon: <MdCategory />, text: "Category", path: `/admin/category` },
         { icon: <RiAlignItemLeftFill />, text: "Items", path: `/admin/item` },
         { icon: <GiCometSpark />, text: "Orders", path: `/admin/order` },
         { icon: <TfiLayoutListThumb />, text: "Customization", path: `/admin/customization` },
-        { icon: <TfiLayoutSlider/>, text: "Banner", path: `/admin/banner` },
     ];
 
     return (

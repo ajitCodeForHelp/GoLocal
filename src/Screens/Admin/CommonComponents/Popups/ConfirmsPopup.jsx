@@ -9,10 +9,10 @@ const ConfirmPopup = ({ onCancel, onConfirm, onThird, message, firstBtn, secondB
             <div className="popup-container position-relative bg-white rounded-4 p-5 text-center shadow">
                 {!isLoading && (
                     <>
-                        <button
+                       {firstBtn && <button
                             className="btn-close position-absolute top-0 end-0 m-3"
                             onClick={onCancel}
-                        ></button>
+                        ></button>}
                         <h5 className="fw-semibold mb-4">{message}</h5>
                         {/* <p className="text-muted mb-4">This action cannot be undone.</p> */}
                         <div className="d-flex justify-content-center gap-3">
@@ -22,7 +22,7 @@ const ConfirmPopup = ({ onCancel, onConfirm, onThird, message, firstBtn, secondB
                             {secondBtn && <button className="btn btn-outline-secondary rounded-pill px-4" onClick={onConfirm}>
                                 {secondBtn}
                             </button>}
-                            {thirdBtn && <button className="btn btn-outline-secondary rounded-pill px-4" onClick={onConfirm}>
+                            {thirdBtn && <button className="btn btn-outline-secondary rounded-pill px-4" onClick={onThird}>
                                 {thirdBtn}
                             </button>}
                         </div>

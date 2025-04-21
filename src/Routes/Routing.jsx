@@ -25,6 +25,11 @@ import Vendor from "../Screens/Admin/AdminScreens/Vendor/Vendor";
 import Login from "../Screens/Admin/Auth/Login";
 import AdminBanner from "../Screens/Admin/AdminScreens/AdminBanner/AdminBanner";
 import AddAdminBanner from "../Screens/Admin/AdminScreens/AdminBanner/AddAdminBanner";
+import UpdateRestaurant from "../Screens/Admin/AdminScreens/Restaurants/UpdateRestaurant";
+import AppCode from "../Screens/Admin/AdminScreens/AppCode/AppCode";
+import AddUpdateAppCode from "../Screens/Admin/AdminScreens/AppCode/AddUpdateCode";
+import Coupon from "../Screens/Admin/AdminScreens/Coupon/Coupon";
+import AddUpdateCoupon from "../Screens/Admin/AdminScreens/Coupon/AddUpdateCoupon";
 
 
 function Routing() {
@@ -91,10 +96,10 @@ function Routing() {
             component: Vendor,
         },
         {
-            id:13,
-            path:"vendor/edit/:id",
+            id: 13,
+            path: "vendor/edit/:id",
             component: AddNewVendor,
-        },{
+        }, {
             id: 14,
             path: "banner",
             component: AdminBanner,
@@ -103,6 +108,41 @@ function Routing() {
             id: 15,
             path: "addbanner",
             component: AddAdminBanner,
+        },
+        {
+            id: 17,
+            path: "banner/edit/:id",
+            component: AddAdminBanner,
+        },
+        {
+            id: 16,
+            path: "restaurantUpdate/:id",
+            component: UpdateRestaurant,
+        },
+        {
+            id: 18,
+            path: "appCode",
+            component: AppCode,
+        },
+        {
+            id: 19,
+            path: "addAppCode",
+            component: AddUpdateAppCode,
+        },
+        {
+            id: 20,
+            path: "coupon",
+            component: Coupon,
+        },
+        {
+            id: 20,
+            path: "coupon/edit/:id",
+            component: AddUpdateCoupon,
+        },
+        {
+            id: 21,
+            path: "addCoupon",
+            component: AddUpdateCoupon,
         },
     ]
     return (

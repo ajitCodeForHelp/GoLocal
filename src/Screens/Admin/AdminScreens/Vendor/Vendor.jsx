@@ -52,7 +52,6 @@ function Vendor() {
         handleStatus(type, id)
         btnText(false, "", "", "", "");
     };
-
     const handleStatus = async (type, id) => {
         let action = ""; // Declare it here
         switch (type) {
@@ -88,7 +87,7 @@ function Vendor() {
     const handleConfirmation = (typ, i) => {
         setType(typ);
         setId(i);
-        btnText(true, "cancel", "ok", `Are you sure you want to ${typ} this restuarant ?`);
+        btnText(true, "cancel", "ok", `Are you sure you want to ${typ} this vendor ?`);
     };
     const update = (id, item) => {
         navigation(`/admin/vendor/edit/${id}`, { state: item })

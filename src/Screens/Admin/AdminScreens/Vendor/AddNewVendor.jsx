@@ -189,26 +189,9 @@ function AddNewVendor() {
             },
         };
 
-        // // If image needs to be uploaded separately, do it here first
-        // if (formData.photoImageUrl) {
-        //     const imageData = new FormData();
-        //     imageData.append("file", formData.photoImageUrl);
-
-        //     try {
-        //         const imgRes = await fetch(``, {
-        //             method: "POST",
-        //             body: imageData,
-        //         });
-        //         const imgData = await imgRes.json();
-        //         payload.photoImageUrl = imgData.url; // adjust based on your response
-        //     } catch (err) {
-        //         console.error("Image upload failed", err);
-        //     }
-        // }
-
         try {
             const res = await fetch(`${BASE_URL}/admin/v1/vendor/update/${id}`, {
-                method: "POST",
+                method: "PUT",
                 headers: {
                     "Content-Type": "application/json",
                     'Authorization': `Bearer ${token}`,
@@ -230,7 +213,7 @@ function AddNewVendor() {
     };
 
     return (
-        <form className="main-form" onSubmit={() => { isEditMode ? handleEdit() : handleSubmit() }}>
+        <form className="main-form" onSubmit={(e) => { isEditMode ? handleEdit(e) : handleSubmit(e) }}>
             <div className="form-container">
                 <div className="step active" data-step="1">
                     <div className="d-flex justify-content-between align-items-center">
