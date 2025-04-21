@@ -208,10 +208,17 @@ function AdminBanner() {
                                             <div className="product-cell image">{item.title}</div>
                                             <div className="product-cell category">{item.bannerType}</div>
                                             <div className="product-cell status-cell">  {item.active ? <span className={`status ${item.active && "active"}`}>Active</span> : <span className={`status ${!item.active && "disabled"}`}>Inactive</span>}</div>
-                                            <div className="product-cell price">
+                                            {/* <div className="product-cell price">
                                                 {item.active ? <span className={`status ${!item.active && "disabled"}`} onClick={() => handleConfirmation("Inactive", item.id)}>Inactive</span> : <span className={`status ${item.active && "active"}`} onClick={() => handleConfirmation("Active", item.id)}>Active</span>}
                                                 <button onClick={() => { update(item.id, item) }}>Edit</button>
-                                            </div>
+                                            </div> */}
+                                            <div className="product-cell action">
+                                            {item.active ? <span className={`status ${!item.active && "disabled"}`} onClick={() => handleConfirmation("Inactive", item.id)}>Inactive</span> : <span className={`status ${item.active && "active"}`} onClick={() => handleConfirmation("Active", item.id)}>Active</span>}
+                                                    <span className="status bg-blue" style={{ fontSize: "17px", }} onClick={() => { update(item.id, item) }}><span style={{ marginRight: "10px" }}>Edit </span> <FiEdit /></span>
+                                                    {/* <span className="cell">Category</span> */}
+                                                    {/* <span className="cell">Category</span> */}
+                                                    <span className="status" style={{ fontSize: "15px", color: "red" }}><span style={{ marginRight: "10px" }}>Delete</span> <RiDeleteBin6Fill /></span>
+                                                </div>
                                         </div>
                                     ))
                                 )}
