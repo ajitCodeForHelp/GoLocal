@@ -3,6 +3,8 @@ import { Link, useNavigate } from "react-router-dom";
 import { FaSearch } from "react-icons/fa";
 import Pagination from "../../CommonComponents/Pagination";
 import ConfirmPopup from "../../CommonComponents/Popups/ConfirmsPopup";
+import { FiEdit } from "react-icons/fi";
+import { RiDeleteBin6Fill } from "react-icons/ri";
 
 function AdminBanner() {
     const BASE_URL = process.env.REACT_APP_BASE_URL;
@@ -34,6 +36,11 @@ function AdminBanner() {
             setIsLoading(false);
         }
     };
+
+    useEffect(() => {
+        fetchItems(currentPage); // Initial fetch
+    }, [currentPage]);
+
     const handleSearchChange = (e) => {
         setSearchTerm(e.target.value);
     };
@@ -137,6 +144,40 @@ function AdminBanner() {
                         <Link className="btn-download" to="/admin/addbanner">
                             <span className="bx">+ Add Banner</span>
                         </Link>
+                    </div>
+                </div>
+                <div className="section-header d-flex w-100 justify-content-between align-items-center mb-3" style={{ padding: "24px", borderRadius: "20px" }}>
+                    <div className="filter d-flex justify-content-between " style={{ width: "20%" }}>
+                        <button className="btn btn-outline-secondary">All</button>
+                        <button className="btn btn-outline-success">Active</button>
+                        <button className="btn btn-outline-danger">Inactive</button>
+                    </div>
+
+                    <div className="form-group ">
+                        <select
+                            id="bannerType"
+                            // value={bannerTypeEnum}
+                            // onChange={(e) => setBannerTypeEnum(e.target.value)}
+                            className="block w-full text-sm text-gray-700 bg-white border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all"
+                            style={{ padding: "8px", borderRadius: "8px", marginRight:"10px" }} >
+                            <option disabled value>Select a banner type</option>
+                            <option value="home" className="bg-blue-100 text-blue-900">Home</option>
+                            <option value="product" className="bg-green-100 text-green-900">Product</option>
+                            <option value="category" className="bg-yellow-100 text-yellow-900">Category</option>
+                            <option value="offer" className="bg-pink-100 text-pink-900">Offer</option>
+                        </select>
+                        <select
+                            id="bannerType"
+                            // value={bannerTypeEnum}
+                            // onChange={(e) => setBannerTypeEnum(e.target.value)}
+                            className="block w-full text-sm text-gray-700 bg-white border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all"
+                            style={{ padding: "8px", borderRadius: "8px" }}  >
+                            <option disabled value>Select a banner type</option>
+                            <option value="home" className="bg-blue-100 text-blue-900">Home</option>
+                            <option value="product" className="bg-green-100 text-green-900">Product</option>
+                            <option value="category" className="bg-yellow-100 text-yellow-900">Category</option>
+                            <option value="offer" className="bg-pink-100 text-pink-900">Offer</option>
+                        </select>
                     </div>
                 </div>
                 <main style={{ display: 'flex', height: "100%", padding: 0 }}>

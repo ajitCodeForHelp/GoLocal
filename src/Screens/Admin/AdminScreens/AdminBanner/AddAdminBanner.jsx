@@ -140,16 +140,24 @@ function AddAdminBanner() {
                             />
                         </div>
 
-                        <div className="form-group">
-                            <label htmlFor="bannerType">Banner Type</label>
-                            <input
-                                type="text"
-                                id="bannerType"
-                                required
-                                value={bannerTypeEnum}
-                                onChange={(e) => setBannerTypeEnum(e.target.value)}
-                            />
-                        </div>
+                    <div className="form-group mb-4">
+                        <label htmlFor="bannerType" className="block text-gray-700 text-sm font-medium mb-2">
+                            Banner Type
+                        </label>
+                        <select
+                            id="bannerType"
+                            value={bannerTypeEnum}
+                            onChange={(e) => setBannerTypeEnum(e.target.value)}
+                            className="block w-full text-sm text-gray-700 bg-white border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all"
+                        >
+                            <option disabled value>Select a banner type</option>
+                            <option value="home" className="bg-blue-100 text-blue-900">Home</option>
+                            <option value="product" className="bg-green-100 text-green-900">Product</option>
+                            <option value="category" className="bg-yellow-100 text-yellow-900">Category</option>
+                            <option value="offer" className="bg-pink-100 text-pink-900">Offer</option>
+                        </select>
+                    </div>
+
 
                         <div className="form-group">
                             <label htmlFor="redirectUrl">Redirect URL</label>
