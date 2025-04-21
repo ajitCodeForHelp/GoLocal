@@ -1222,13 +1222,25 @@ body.dark #content nav .profile-menu li a {
     background-color: #2ba972;
 }
 
-.status.disabled {
-    color: #59719d;
-    background-color: rgba(89, 113, 157, 0.2);
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-4px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  .animate-fadeIn {
+    animation: fadeIn 0.2s ease-out forwards;
+  }
+  
+
+
+
+.status.false {
+    color: red !important;
+    background-color: #ffcccc;
 }
 
-.status.disabled:before {
-    background-color: #59719d;
+.status.false:before {
+    background-color: red;
 }
 
 /* <-------------------------form----------------------------------> */
