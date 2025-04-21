@@ -25,6 +25,9 @@ function Slider({ isSidebarHidden }) {
         { icon: <TfiLayoutSlider />, text: "Coupon", path: `/admin/coupon` },
         { icon: <MdCategory />, text: "Category", path: `/admin/category` },
         { icon: <RiAlignItemLeftFill />, text: "Items", path: `/admin/item` },
+        { icon: <RiAlignItemLeftFill />, text: "Item Add on", path: `/admin/itemAddOn` },
+        { icon: <TfiLayoutListThumb />, text: "Vendor Customer", path: `/admin/customer` },
+        { icon: <TfiLayoutListThumb />, text: "Vendor Tax", path: `/admin/vendorTax` },
         { icon: <GiCometSpark />, text: "Orders", path: `/admin/order` },
         { icon: <TfiLayoutListThumb />, text: "Customization", path: `/admin/customization` },
     ];
@@ -46,7 +49,7 @@ function Slider({ isSidebarHidden }) {
                         </li>
                     ))}
                 </ul>
-                <ul className="side-menu bottom">
+                {/* <ul className="side-menu bottom">
                     <li>
                         <Link>
                             <span className="bx"><IoSettingsSharp /></span>
@@ -59,7 +62,7 @@ function Slider({ isSidebarHidden }) {
                             <span className="text">Logout</span>
                         </Link>
                     </li>
-                </ul>
+                </ul> */}
             </section >
         </>
     )

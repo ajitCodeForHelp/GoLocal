@@ -30,6 +30,11 @@ import AppCode from "../Screens/Admin/AdminScreens/AppCode/AppCode";
 import AddUpdateAppCode from "../Screens/Admin/AdminScreens/AppCode/AddUpdateCode";
 import Coupon from "../Screens/Admin/AdminScreens/Coupon/Coupon";
 import AddUpdateCoupon from "../Screens/Admin/AdminScreens/Coupon/AddUpdateCoupon";
+import VendorCustomer from "../Screens/Admin/AdminScreens/VendorCustomer/VendorCustomer";
+import ItemAddOn from "../Screens/Admin/AdminScreens/ItemAddOn/ItemAddOn";
+import UpdateItemAddOn from "../Screens/Admin/AdminScreens/ItemAddOn/UpdateItemAddOn";
+import VendorTax from "../Screens/Admin/AdminScreens/VendorTax/VendorTax";
+import UpdateVendorTax from "../Screens/Admin/AdminScreens/VendorTax/UpdateVendorTax";
 
 
 function Routing() {
@@ -58,6 +63,11 @@ function Routing() {
         {
             id: 5,
             path: 'addItem',
+            component: AddItem,
+        },
+        {
+            id: 5,
+            path: 'item/edit/:id',
             component: AddItem,
         },
         {
@@ -143,6 +153,41 @@ function Routing() {
             id: 21,
             path: "addCoupon",
             component: AddUpdateCoupon,
+        },
+        {
+            id: 22,
+            path: "customer",
+            component: VendorCustomer,
+        },
+        {
+            id: 23,
+            path: "itemAddOn",
+            component: ItemAddOn,
+        },
+        {
+            id: 24,
+            path: "itemAddOn/edit/:id",
+            component: UpdateItemAddOn,
+        },
+        {
+            id: 25,
+            path: "addItemAddOn",
+            component: UpdateItemAddOn,
+        },
+        {
+            id: 26,
+            path: "vendorTax",
+            component: VendorTax,
+        },
+        {
+            id: 26,
+            path: "addVendorTax",
+            component: UpdateVendorTax,
+        },
+        {
+            id: 26,
+            path: "vendorTax/edit/:id",
+            component: UpdateVendorTax,
         },
     ]
     return (

@@ -1,54 +1,54 @@
 import React, { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
 import { MdOutlineFoodBank } from "react-icons/md";
 import { ImCancelCircle } from "react-icons/im";
+import { useNavigate } from "react-router-dom";
 import ConfirmPopup from "../../CommonComponents/Popups/ConfirmsPopup";
-
-function AddCategory() {
+import { IoFastFoodSharp } from "react-icons/io5";
+function UpdateItemAddOn() {
     const BASE_URL = process.env.REACT_APP_BASE_URL;
+
     const navigation = useNavigate();
-    const [category, setCategory] = useState([]);
-    const categoryIds = async () => {
+    const [categoryId, setCategoryId] = useState([]);
+    const fetchParentCategoryId = async () => {
         try {
             const token = sessionStorage.getItem('tokenKey');
             const restaurantId = sessionStorage.getItem('restaurantId');
-            const res = await fetch(`${BASE_URL}/vendor/v1/${restaurantId}/category/category-key-value-list`, {
+            const res = await fetch(`${BASE_URL}/vendor/v1/${restaurantId}/category/parent-key-value-list`, {
                 headers: {
-                    'Authorization': `Bearer ${token}`
+                    'Application': `Bearer ${token}`
                 }
             });
             const getRes = await res.json();
             if (getRes.errorCode === 0) {
-                setCategory(getRes.responsePacket);
+                setCategoryId(getRes.responsePacket);
             }
         } catch (e) {
-            console.log("error in api", e);
+            console.log(e, "error in api");
         }
     };
     useEffect(() => {
-        categoryIds();
+        fetchParentCategoryId();
     }, []);
-    const [restaurantTitle, setRestaurantTitle] = useState();
+
     const [formData, setFormData] = useState({
-        parentCategoryId: "",
         title: "",
-        description: "",
-        sortOrder: "",
-        categoryIconUrl: "",
+        categoryId: "",
+        sortOrder: 0,
+        addOnPrice: 0,
     });
 
     const apiRes = async () => {
         const payload = {
-            parentCategoryId: formData.parentCategoryId,
             title: formData.title,
-            description: formData.description,
-            sortOrder: formData.sortOrder,
-            categoryIconUrl: formData.categoryIconUrl,
+            categoryId: formData.categoryId,
+            sortOrder:formData.sortOrder,
+            addOnPrice:formData.addOnPrice,
         };
+
         try {
             const token = sessionStorage.getItem('tokenKey');
             const restaurantId = sessionStorage.getItem('restaurantId');
-            const res = await fetch(`${BASE_URL}/vendor/v1/${restaurantId}/category/save`, {
+            const res = await fetch(`${BASE_URL}/vendor/v1/${restaurantId}/itemAddOn/save`, {
                 method: "POST",
                 headers: {
                     'Content-Type': 'application/json',
@@ -58,7 +58,7 @@ function AddCategory() {
             })
             const getRes = await res.json();
             if (getRes.errorCode === 0) {
-                btnText(true, "", "", "ok", "Category Added Successfully ");
+                btnText(true, "", "", "ok", "Item Added Successfully ");
             }
         } catch (e) {
             console.log(e, "error in add api");
@@ -66,7 +66,9 @@ function AddCategory() {
     };
     const handleChange = (e) => {
         const { name, value } = e.target;
-        setFormData((prev) => ({ ...prev, [name]: value }))
+        setFormData((prev) => ({
+            ...prev, [name]: value
+        }));
     };
 
     const [isOpen, setIsOpen] = useState(false);
@@ -89,11 +91,13 @@ function AddCategory() {
         btnText(false, "", "", "", "");
     };
     const OnThirdBtn = () => {
-        navigation("/admin/category");
+        navigation("/admin/item");
         btnText(false, "", "", "", "");
     };
     const handleSubmit = () => {
-        if (!restaurantTitle) {
+        const requiredFields = ['title', 'addOnPrice', 'categoryId', 'sortOrder'];
+        const isAnyEmpty = requiredFields.some(field => !formData[field]);
+        if (isAnyEmpty) {
             btnText(true, "ok", "", "", "Kindly fill the Input!");
             return;
         } else {
@@ -107,16 +111,20 @@ function AddCategory() {
                 <div className="form-container">
                     <div className="step active" data-step="1">
                         <div className="d-flex justify-content-between align-items-center">
-                            <h2>Add Category</h2>
+                            <h2>Add Item</h2>
                             <h2 onClick={() => navigation(-1)} role="button"><ImCancelCircle /></h2>
                         </div>
-
                         <div className="form-group">
-                            <label for="contact">Parent Category</label>
+                            <label for="company">Title</label>
+                            <input type="text" id="company" required />
+                            <div className="error d-none">Please enter your item name</div>
+                        </div>
+                        <div className="form-group">
+                            <label for="contact">Category</label>
                             {/* <input type="text" id="category" required /> */}
-                            <select name="parentCategoryId" onChange={handleChange} value={formData.parentCategoryId} id="">
+                            <select name="parentCategoryId" value={formData.parentCategoryId} onChange={handleChange} id="">
                                 {
-                                    category.map((item) => {
+                                    categoryId.map((item) => {
                                         return (
                                             <option value={item.value}>{item.label}</option>
                                         )
@@ -125,35 +133,19 @@ function AddCategory() {
                             </select>
                             <div className="error d-none">Please enter catgory</div>
                         </div>
-                        <div className="form-group">
-                            <label for="title">Title</label>
-                            <input type="text" id="title" required name="title" value={formData.title} onChange={handleChange}/>
-                            <div className="error d-none">Please enter title</div>
-                        </div>
-                        <div className="form-group">
-                            <label for="company">Sort Order</label>
-                            <input type="number" required name="title" value={formData.title} onChange={handleChange}/>
-                            <div className="error d-none">Please enter sort order</div>
-                        </div>
-                        <div className="form-group">
-                            <label htmlFor="description">Description</label>
-                            <textarea name="description" value={formData.description} onChange={handleChange} id="description"></textarea>
-                        </div>
-
-                        <div className="form-group d-flex gap-5 justify-content-between align-items-center">
-                            <div className="form-inner-group w-25">
-                                <label>Image</label>
-                                <input type="file" id="image" className="d-none" />
-                                <label htmlFor="image" role="button" style={{ fontSize: "8rem" }} className="border w-100 border-2 rounded h-25 d-flex justify-content-center align-items-center">
-                                    <MdOutlineFoodBank />
-                                </label>
+                        <div className="form-group d-flex justify-content-between align-items-center w-100">
+                            <div className="form-inner-group w-50">
+                                <label htmlFor="">Sort Order</label>
+                                <input type="number" id="mrp" required onChange={handleChange} value={formData.sortOrder} name="sortOrder" />
+                            </div>
+                            <div className="form-inner-group w-50 ms-2">
+                                <label htmlFor="sp">Add On Price</label>
+                                <input type="number" value={formData.addOnPrice} name="addOnPrice" onChange={handleChange} id="sp" required />
                             </div>
                         </div>
-
-
                         <div className="buttons">
                             <div></div>
-                            <button className="next">Submit</button>
+                            <button className="next" onClick={handleSubmit}>Submit</button>
                         </div>
                     </div>
                 </div>
@@ -170,5 +162,5 @@ function AddCategory() {
             />
         </>
     )
-};
-export default AddCategory;
+}
+export default UpdateItemAddOn;

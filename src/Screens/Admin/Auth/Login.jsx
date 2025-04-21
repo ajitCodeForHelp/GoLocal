@@ -7,7 +7,23 @@ const Login = () => {
     const [userName, setUserName] = useState("");
     const [password, setPassword] = useState("");
     const location = useLocation();
-
+    const fetchRestaurantId = async () => {
+        const token = sessionStorage.getItem('tokenKey');
+        console.log(token, "token");
+        try {
+            const res = await fetch(`${BASE_URL}/vendor/v1/restaurant/get-my-restaurant-id`, {
+                headers: {
+                    'Authorization': `Bearer ${token}`
+                }
+            });
+            const getRes = await res.json();
+            if (getRes.errorCode === 0) {
+                sessionStorage.setItem("restaurantId", getRes.responsePacket);
+            }
+        } catch (e) {
+            console.log(e, "error in api");
+        }
+    };
 
     const navigate = useNavigate();
 
@@ -31,6 +47,7 @@ const Login = () => {
             if (getRes.errorCode === 0) {
                 alert("login");
                 sessionStorage.setItem("tokenKey", getRes.responsePacket?.secretKey);
+                fetchRestaurantId();
                 navigate('/admin/dashboard')
             }
         } catch (e) {
